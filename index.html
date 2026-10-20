@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>20/10 Gửi Bé Đậu Yêu Dấu 🌸 Lời Hứa Tuổi 18</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+
+  <!-- Google Fonts: Dancing Script (Handwriting), Playfair Display (Romantic Serif), Quicksand (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+            handwriting: ['"Dancing Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            cream: {
+              50: '#fffdfa',
+              100: '#fffbf5',
+              200: '#fff6e9',
+              300: '#fef0d6',
+            },
+            sakura: {
+              50: '#fff5f7',
+              100: '#ffe4e8',
+              200: '#fecdd6',
+              300: '#fda4b5',
+              400: '#fb718e',
+              500: '#f43f68',
+              600: '#e11d4d',
+            }
+          },
+          animation: {
+            'float-slow': 'floatGentle 6s ease-in-out infinite',
+            'float-reverse': 'floatReverse 7s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
+            'spin-slow': 'spin 18s linear infinite',
+            'bounce-cute': 'bounceCute 2s infinite',
+          },
+          keyframes: {
+            floatGentle: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(1.5deg)' },
+            },
+            floatReverse: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(-2deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+              '50%': { opacity: '0.95', transform: 'scale(1.03)' },
+            },
+            bounceCute: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- canvas-confetti CDN for celebration bursts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Styling & Mobile Ergonomics */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at 50% 15%, #fff1f4 0%, #ffe4e9 38%, #fdf2f8 70%, #fff7ed 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #374151;
+      padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+
+    /* Ambient Canvas */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glassmorphism Styles */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 50px -12px rgba(244, 63, 104, 0.16),
+                  0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                  0 10px 25px -6px rgba(225, 29, 77, 0.08);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(244, 63, 104, 0.08);
+    }
+
+    /* Responsive Envelope Construction for All Mobile Screens */
+    .envelope-wrapper {
+      perspective: 1200px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .envelope {
+      position: relative;
+      width: 280px;
+      height: 195px;
+      background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 100%);
+      border-radius: 12px;
+      box-shadow: 0 15px 35px -8px rgba(225, 29, 77, 0.32),
+                  0 8px 16px -4px rgba(0, 0, 0, 0.06);
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @media (min-width: 360px) {
+      .envelope {
+        width: 310px;
+        height: 215px;
+        border-radius: 14px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope {
+        width: 420px;
+        height: 280px;
+      }
+    }
+
+    .envelope-wrapper:hover .envelope {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    /* Flap Top */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
+      border-top: 115px solid #ec4899;
+      transform-origin: top center;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    @media (min-width: 360px) {
+      .envelope-flap {
+        border-left: 155px solid transparent;
+        border-right: 155px solid transparent;
+        border-top: 125px solid #ec4899;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope-flap {
+        border-left: 210px solid transparent;
+        border-right: 210px solid transparent;
+        border-top: 160px solid #ec4899;
+      }
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    /* Envelope Pockets (Bottom & Sides) */
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (min-width: 360px) {
+      .envelope-pocket {
+        border-radius: 14px;
+      }
+    }
+
+    .envelope-pocket::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 140px solid #f472b6;
+      border-right: 140px solid #f472b6;
+      border-top: 98px solid transparent;
+      border-bottom: 98px solid #db2777;
+    }
+
+    @media (min-width: 360px) {
+      .envelope-pocket::before {
+        border-left: 155px solid #f472b6;
+        border-right: 155px solid #f472b6;
+        border-top: 108px solid transparent;
+        border-bottom: 108px solid #db2777;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope-pocket::before {
+        border-left: 210px solid #f472b6;
+        border-right: 210px solid #f472b6;
+        border-top: 140px solid transparent;
+        border-bottom: 140px solid #db2777;
+      }
+    }
+
+    /* Wax Seal Button */
+    .wax-seal {
+      position: absolute;
+      top: 86px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 62px;
+      height: 62px;
+      background: radial-gradient(circle at 35% 35%, #f43f5e 0%, #be123c 75%, #881337 100%);
+      border-radius: 50%;
+      box-shadow: 0 6px 18px rgba(190, 18, 60, 0.45),
+                  0 0 0 3px rgba(254, 205, 211, 0.6),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                  inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @media (min-width: 360px) {
+      .wax-seal {
+        top: 95px;
+        width: 68px;
+        height: 68px;
+        box-shadow: 0 8px 20px rgba(190, 18, 60, 0.5),
+                    0 0 0 4px rgba(254, 205, 211, 0.6),
+                    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                    inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    @media (min-width: 640px) {
+      .wax-seal {
+        top: 125px;
+        width: 82px;
+        height: 82px;
+      }
+    }
+
+    .wax-seal:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 10px 24px rgba(190, 18, 60, 0.65),
+                  0 0 0 5px rgba(254, 205, 211, 0.8);
+    }
+
+    .wax-seal:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    /* Polaroid Photo Frame */
+    .polaroid-card {
+      background: #ffffff;
+      padding: 10px 10px 16px 10px;
+      border-radius: 6px;
+      box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.1),
+                  0 0 0 1px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      .polaroid-card {
+        padding: 12px 12px 18px 12px;
+      }
+    }
+
+    .polaroid-card:hover, .polaroid-card:active {
+      transform: translateY(-6px) scale(1.03) rotate(0deg) !important;
+      box-shadow: 0 20px 40px -8px rgba(244, 63, 104, 0.22),
+                  0 0 0 2px rgba(251, 113, 142, 0.4);
+      z-index: 20;
+    }
+
+    /* Washi Tape Effect */
+    .washi-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 80px;
+      height: 22px;
+      background: rgba(254, 205, 211, 0.8);
+      border-left: 3px dashed rgba(244, 63, 94, 0.4);
+      border-right: 3px dashed rgba(244, 63, 94, 0.4);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+    }
+
+    /* Heart Burst Animation */
+    .flying-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      animation: flyUpAndFade 1.6s ease-out forwards;
+    }
+
+    @keyframes flyUpAndFade {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.6) rotate(0deg);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(var(--tx) * 1.4), -120px) scale(1.5) rotate(calc(var(--rot) * 2));
+      }
+    }
+
+    /* Highlighted Promise Banner */
+    .promise-highlight {
+      background: linear-gradient(120deg, rgba(254, 205, 211, 0.35) 0%, rgba(253, 164, 181, 0.55) 100%);
+      border-left: 4px solid #e11d4d;
+      border-radius: 0 12px 12px 0;
+    }
+  </style>
+</head>
+
+<body class="relative min-h-screen text-slate-700 flex flex-col justify-between selection:bg-sakura-200 selection:text-sakura-600">
+
+  <!-- Interactive Falling Sakura & Sparkles Background Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ================= WELCOME OVERLAY (FOR GUARANTEED INSTANT AUDIO ON MOBILE/DESKTOP) ================= -->
+  <div id="welcomeSplash" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-rose-50/80 backdrop-blur-md transition-all duration-700">
+    <div class="glass-card max-w-sm w-full rounded-3xl p-6 sm:p-8 text-center relative shadow-2xl border-2 border-white/95 transform transition-transform duration-500 hover:scale-[1.02]">
+      <!-- Animated Gift & Sprout -->
+      <div class="relative w-20 h-20 mx-auto mb-4">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-rose-500 to-sakura-400 flex items-center justify-center text-white text-3xl shadow-xl shadow-rose-200 animate-pulse">
+          <i class="fa-solid fa-gift text-amber-100 text-3xl"></i>
+        </div>
+        <div class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-sm shadow">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+      </div>
+
+      <!-- Tag -->
+      <span class="inline-block px-3 py-1 rounded-full bg-sakura-100 text-sakura-600 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-2">
+        20 Tháng 10 • Yêu Thương
+      </span>
+
+      <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-800 mb-1">
+        Gửi <span class="font-handwriting text-sakura-600 text-3xl sm:text-4xl">Bé Đậu 🌸</span>
+      </h3>
+      <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed">
+        Có một món quà bí mật & bài hát thanh xuân dành riêng cho em. Hãy chạm vào để bắt đầu nhé! ✨
+      </p>
+
+      <!-- Pulsing Enter Button -->
+      <button id="startExperienceBtn" class="w-full py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-rose-500 to-sakura-500 hover:from-rose-600 hover:to-sakura-600 text-white font-bold text-sm sm:text-base shadow-lg shadow-rose-200 active:scale-95 transition-all flex items-center justify-center space-x-2.5 cursor-pointer animate-bounce-cute">
+        <i class="fa-solid fa-play text-amber-200 text-xs sm:text-sm"></i>
+        <span>Mở quà & Bật nhạc chill 🎵</span>
+      </button>
+
+      <span class="block text-[10px] text-slate-400 mt-3 italic">
+        🎧 Bật âm lượng hoặc đeo tai nghe để cảm nhận trọn vẹn nhé
+      </span>
+    </div>
+  </div>
+
+  <!-- Ambient Glowing Blobs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-rose-200/40 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-pink-300/30 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-0" style="animation-delay: 1.5s;"></div>
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-100/20 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+  <!-- ================= TOP HEADER / CONTROLS (MOBILE-FIRST RESPONSIVE) ================= -->
+  <header class="relative z-30 w-full px-3 sm:px-8 py-3 sm:py-4 flex items-center justify-between max-w-5xl mx-auto gap-2">
+    <!-- Brand / Event Badge -->
+    <div class="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 shadow-sm border border-sakura-200 flex items-center justify-center text-sakura-500 text-base sm:text-lg shadow-pink-100">
+        <i class="fa-solid fa-seedling animate-bounce-cute text-emerald-500"></i>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-[9px] sm:text-xs tracking-wider uppercase font-bold text-sakura-500">20 Tháng 10</span>
+        <span class="font-handwriting text-lg sm:text-2xl font-bold text-slate-800 leading-tight">Bé Đậu 🌸</span>
+      </div>
+    </div>
+
+    <!-- Gen Z Spotify Mini Music Player (Compact & Full Controls on Mobile) -->
+    <div class="glass-pill px-2.5 py-1 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-3 shadow-md border border-sakura-200 shrink-0">
+      <!-- Spinning Vinyl Disc -->
+      <div id="vinylDisc" class="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-slate-900 border-2 border-sakura-300 flex items-center justify-center cursor-pointer shadow-sm transition-transform active:scale-95" title="Bật/Tắt nhạc">
+        <i id="musicIcon" class="fa-solid fa-compact-disc text-rose-400 text-sm sm:text-xl"></i>
+        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-sakura-500"></div>
+      </div>
+
+      <!-- Song info & Track Title -->
+      <div class="flex flex-col text-left max-w-[75px] xs:max-w-[110px] sm:max-w-[170px] select-none">
+        <div class="flex items-center space-x-1">
+          <span id="playerLiveDot" class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+          <span id="playerSongTitle" class="text-[11px] sm:text-sm font-bold text-slate-800 truncate">Sầu Tím Thiệp Hồng</span>
+        </div>
+        <span id="playerArtist" class="text-[8px] sm:text-[10px] text-slate-500 truncate">Quang Lê & Lệ Quyên</span>
+      </div>
+
+      <!-- Equalizer Bars -->
+      <div id="eqVisualizer" class="hidden md:flex items-end space-x-0.5 h-3.5">
+        <span class="w-1 bg-sakura-500 rounded-full animate-bounce" style="height: 12px; animation-duration: 0.6s;"></span>
+        <span class="w-1 bg-rose-500 rounded-full animate-bounce" style="height: 8px; animation-duration: 0.4s; animation-delay: 0.15s;"></span>
+        <span class="w-1 bg-sakura-400 rounded-full animate-bounce" style="height: 14px; animation-duration: 0.7s; animation-delay: 0.3s;"></span>
+      </div>
+
+      <!-- Controls: Prev, Play/Pause, Next -->
+      <div class="flex items-center space-x-1 sm:space-x-1.5">
+        <button id="prevTrackBtn" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full hover:bg-sakura-100/70 text-slate-600 hover:text-sakura-600 flex items-center justify-center text-[10px] sm:text-xs active:scale-95 transition-all cursor-pointer" title="Bài trước">
+          <i class="fa-solid fa-backward-step"></i>
+        </button>
+        <button id="playPauseBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-sakura-500 to-rose-500 hover:from-sakura-600 hover:to-rose-600 text-white flex items-center justify-center text-[10px] sm:text-xs shadow-md shadow-sakura-200 active:scale-95 transition-all cursor-pointer" title="Phát / Tạm dừng">
+          <i id="playPauseIcon" class="fa-solid fa-play ml-0.5"></i>
+        </button>
+        <button id="nextTrackBtn" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full hover:bg-sakura-100/70 text-slate-600 hover:text-sakura-600 flex items-center justify-center text-[10px] sm:text-xs active:scale-95 transition-all cursor-pointer" title="Đổi bài tiếp theo">
+          <i class="fa-solid fa-forward-step"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="relative z-20 flex-grow flex items-center justify-center px-3 sm:px-4 py-4 sm:py-10 w-full">
+    <div class="w-full max-w-4xl mx-auto flex flex-col items-center">
+
+      <!-- ================= 1. VIEW PHONG BÌ (ENVELOPE VIEW) ================= -->
+      <section id="envelopeView" class="w-full flex flex-col items-center text-center transition-all duration-700 px-2 sm:px-0">
+        
+        <!-- Welcome Tag -->
+        <div class="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/80 border border-sakura-200 text-sakura-600 text-[11px] sm:text-sm font-semibold shadow-sm mb-4 sm:mb-6 animate-float-slow">
+          <span class="inline-block w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+          <span>Bưu thiếp thanh xuân gửi cô nữ sinh lớp 12 💌</span>
+        </div>
+
+        <h1 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-slate-800 tracking-tight leading-tight mb-2">
+          Gửi <span class="font-handwriting text-3xl sm:text-5xl md:text-6xl text-sakura-600">Bé Đậu</span> của anh ✨
+        </h1>
+        <p class="text-slate-600 text-xs sm:text-base max-w-md mx-auto mb-6 sm:mb-10 px-2 leading-relaxed">
+          Có một phong bì bí mật được gói ghém cẩn thận gửi đến Đậu nhân ngày 20/10. Hãy chạm vào con dấu trái tim để mở ra nhé!
+        </p>
+
+        <!-- 3D Envelope Wrapper -->
+        <div class="envelope-wrapper my-3 sm:my-4" id="envelopeTrigger">
+          <div class="envelope" id="envelopeEl">
+            <!-- Flap -->
+            <div class="envelope-flap"></div>
+            <!-- Pocket -->
+            <div class="envelope-pocket"></div>
+
+            <!-- Wax Seal Button -->
+            <div class="wax-seal" id="waxSealBtn" title="Chạm để mở thư">
+              <i class="fa-solid fa-heart text-amber-100 text-lg sm:text-2xl drop-shadow mb-0.5 animate-pulse"></i>
+              <span class="text-[8px] sm:text-[10px] font-bold tracking-wider text-rose-100 uppercase">Gửi Đậu</span>
+            </div>
+
+            <!-- Little preview of letter sticking inside -->
+            <div class="absolute inset-x-3 sm:inset-x-4 top-2 bottom-4 bg-white/95 rounded-t-lg shadow-inner border border-rose-100 flex flex-col items-center justify-center p-2 sm:p-3 opacity-90 pointer-events-none">
+              <i class="fa-solid fa-feather text-sakura-300 text-xl sm:text-2xl mb-0.5 sm:mb-1"></i>
+              <span class="font-handwriting text-rose-400 text-xs sm:text-sm">Lời chúc 20/10...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 flex items-center justify-center space-x-2 text-xs sm:text-sm text-slate-500">
+          <i class="fa-solid fa-arrow-pointer text-sakura-500 animate-bounce"></i>
+          <span>Chạm vào <b>con dấu trái tim</b> để mở thư</span>
+        </div>
+      </section>
+
+
+      <!-- ================= 2. VIEW BỨC THƯ & ALBUM (LETTER & ALBUM VIEW) ================= -->
+      <section id="letterView" class="hidden w-full transition-all duration-700 opacity-0 transform translate-y-8 px-1 sm:px-0">
+        
+        <!-- Action bar above letter: Fold back / Audio reminder -->
+        <div class="w-full flex items-center justify-between mb-3 px-1 sm:px-2">
+          <button id="foldBackBtn" class="glass-pill px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-sakura-600 transition-colors flex items-center space-x-1.5 active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-arrow-left text-sakura-400"></i>
+            <span>Gấp thư lại</span>
+          </button>
+          
+          <div class="text-[11px] sm:text-xs text-sakura-500 font-medium flex items-center space-x-1">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>Món quà thanh xuân 20/10</span>
+          </div>
+        </div>
+
+        <!-- The Grand Letter Card -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 md:p-12 relative overflow-hidden">
+          
+          <!-- Decorative Watermark in Letter Corner -->
+          <div class="absolute -top-10 -right-10 w-44 h-44 bg-sakura-100/50 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute top-4 right-4 sm:top-8 sm:right-8 opacity-20 pointer-events-none text-sakura-400 text-5xl sm:text-8xl">
+            <i class="fa-solid fa-stamp"></i>
+          </div>
+
+          <!-- Postal Stamp Badge -->
+          <div class="flex items-center justify-between border-b border-sakura-100 pb-3 sm:pb-4 mb-5 sm:mb-6">
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-sakura-400"></span>
+              <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-sakura-500">Thư Riêng • Cho Đậu</span>
+            </div>
+            <div class="text-[10px] sm:text-[11px] font-semibold text-slate-400 bg-sakura-50 px-2 sm:px-2.5 py-1 rounded-md border border-sakura-100">
+              20.10 • Lớp 12 Rạng Rỡ
+            </div>
+          </div>
+
+          <!-- Letter Heading -->
+          <div class="mb-5 sm:mb-6">
+            <h2 class="font-handwriting text-2xl sm:text-4xl md:text-5xl font-bold text-sakura-600 leading-tight">
+              Gửi Bé Đậu của anh 🌸,
+            </h2>
+          </div>
+
+          <!-- Letter Body Paragraphs -->
+          <div class="space-y-3.5 sm:space-y-4 text-slate-700 text-[14px] sm:text-base md:text-lg leading-relaxed font-normal">
+            <p>
+              Hôm nay là <b>ngày 20/10</b> — ngày để cả thế giới tôn vinh phái đẹp, nhưng với anh, cả thế giới hôm nay chỉ thu nhỏ lại bằng một cô bé học sinh lớp 12 hay cười, đôi khi hơi ngốc xít một xíu nhưng lúc nào cũng là điều đáng yêu nhất trần đời.
+            </p>
+
+            <p>
+              Anh biết năm nay Đậu phải vất vả nhiều lắm. Những đêm thức khuya giải từng xấp đề thi dày cộp, những bài Toán khó nhằn, những trang sách ngập tràn công thức và cả những âu lo vu vơ về kỳ thi đại học sắp tới... 
+            </p>
+
+            <p class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-sakura-50/70 border border-sakura-100 text-slate-700">
+              🌱 <b class="text-sakura-600">Nhưng Đậu đừng sợ nhé!</b> Em đã nỗ lực rất nhiều và em giỏi hơn em nghĩ cả trăm lần đấy. Dù bài thi có khó đến đâu, hãy luôn nhớ rằng phía sau Đậu sẽ luôn có một người sẵn sàng làm hậu phương vững chắc nhất, luôn bên cạnh lắng nghe, tiếp thêm năng lượng và cổ vũ em từng bước một.
+            </p>
+
+            <p>
+              Chúc <b>Bé Đậu</b> của anh một ngày 20/10 thật nhiều niềm vui, ăn thật ngon, ngủ thật sâu, lúc nào cũng giữ nụ cười trong trẻo trên môi và tự tin bước thẳng vào cánh cổng trường đại học mà em hằng mơ ước!
+            </p>
+
+            <!-- THE PROMISE (HIGHLIGHTED) -->
+            <div class="promise-highlight p-3.5 sm:p-5 my-5 sm:my-6 bg-rose-50/80">
+              <p class="font-handwriting text-xl sm:text-3xl font-bold text-sakura-600 tracking-wide mb-1">
+                "Và nhớ về lời hứa của mình nhá... 🤍"
+              </p>
+              <p class="text-[11px] sm:text-sm text-slate-500 italic">
+                Lời hứa của thanh xuân tuổi 18, anh vẫn luôn giữ trọn trong tim và chờ ngày cùng Đậu thực hiện.
+              </p>
+            </div>
+          </div>
+
+          <!-- Letter Signature -->
+          <div class="mt-6 sm:mt-8 pt-4 border-t border-sakura-100 flex flex-col items-end">
+            <span class="text-xs text-slate-400 italic">Luôn ủng hộ Đậu vô điều kiện,</span>
+            <span class="font-handwriting text-xl sm:text-3xl font-bold text-sakura-600 mt-1">Người thương Đậu ✨</span>
+          </div>
+
+          <!-- ================= 3. GÓC KỶ NIỆM POLAROID (2 ẢNH CỦA ĐẬU) ================= -->
+          <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t-2 border-dashed border-sakura-200">
+            <div class="text-center mb-6 sm:mb-8">
+              <span class="inline-block px-3 py-1 rounded-full bg-sakura-100/80 text-sakura-600 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-2">
+                📸 Kỷ Niệm Của Đậu
+              </span>
+              <h3 class="font-serif text-xl sm:text-3xl font-bold text-slate-800">
+                Góc Ảnh Dễ Thương Của Cô Nữ Sinh Lớp 12
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">Chạm vào từng bức ảnh để ngắm nhìn vẻ đẹp đáng yêu nhất của Đậu nhé!</p>
+            </div>
+
+            <!-- Polaroid Grid (Optimized for Mobile) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 max-w-2xl mx-auto px-1 sm:px-2">
+              
+              <!-- PHOTO 1: ky1.jpg -->
+              <div class="polaroid-card group cursor-pointer max-w-[280px] xs:max-w-[310px] sm:max-w-none mx-auto w-full" style="transform: rotate(-2deg);">
+                <!-- Washi tape at top -->
+                <div class="washi-tape"></div>
+
+                <!-- Image container with ratio -->
+                <div class="w-full aspect-[4/3] rounded overflow-hidden bg-slate-100 relative shadow-inner">
+                  <img 
+                    src="./assets/ky1.jpg" 
+                    alt="Bé Đậu đáng yêu 1" 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    onerror="this.src='/Users/admin/Desktop/ky1.jpg'"
+                  />
+                  <!-- Sparkle overlay on hover -->
+                  <div class="absolute inset-0 bg-sakura-500/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1 rounded-full bg-white/90 text-sakura-600 font-semibold text-xs shadow-md">
+                      ✨ Đậu xinh xắn nhất ✨
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Handwritten caption -->
+                <div class="mt-3 text-center">
+                  <p class="font-handwriting text-lg sm:text-2xl font-bold text-slate-700">
+                    Cô bé Đậu chăm chỉ & đáng yêu nhất 💕
+                  </p>
+                  <span class="text-[10px] text-slate-400 font-medium">Khoảnh khắc thanh xuân rực rỡ</span>
+                </div>
+              </div>
+
+              <!-- PHOTO 2: ky2.jpg -->
+              <div class="polaroid-card group cursor-pointer max-w-[280px] xs:max-w-[310px] sm:max-w-none mx-auto w-full" style="transform: rotate(2deg);">
+                <!-- Washi tape at top -->
+                <div class="washi-tape" style="transform: translateX(-50%) rotate(2deg); background: rgba(254, 215, 170, 0.75);"></div>
+
+                <!-- Image container with ratio -->
+                <div class="w-full aspect-[4/3] rounded overflow-hidden bg-slate-100 relative shadow-inner">
+                  <img 
+                    src="./assets/ky2.jpg" 
+                    alt="Bé Đậu đáng yêu 2" 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    onerror="this.src='/Users/admin/Desktop/ky2.jpg'"
+                  />
+                  <!-- Sparkle overlay on hover -->
+                  <div class="absolute inset-0 bg-sakura-500/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1 rounded-full bg-white/90 text-sakura-600 font-semibold text-xs shadow-md">
+                      🌸 Nụ cười tỏa nắng 🌸
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Handwritten caption -->
+                <div class="mt-3 text-center">
+                  <p class="font-handwriting text-lg sm:text-2xl font-bold text-slate-700">
+                    Nụ cười làm tan chảy mọi áp lực thi cử ✨
+                  </p>
+                  <span class="text-[10px] text-slate-400 font-medium">Bình yên & rạng rỡ tuổi 18</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- ================= 4. CÁC NÚT TƯƠNG TÁC SIÊU CUTE DÀNH RIÊNG CHO ĐẬU ================= -->
+          <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-sakura-100 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            
+            <!-- Button 1: Send Hugs -->
+            <button id="sendHugBtn" class="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-sakura-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-rose-200 hover:shadow-xl hover:from-rose-600 hover:to-sakura-600 transition-all duration-300 flex items-center justify-center space-x-2 active:scale-95 cursor-pointer">
+              <i class="fa-solid fa-heart text-amber-200 animate-pulse text-base sm:text-lg"></i>
+              <span>Nạp 1000 cái ôm cho Đậu 🫂</span>
+            </button>
+
+            <!-- Button 2: Lucky Exam Draw -->
+            <button id="drawFortuneBtn" class="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-white border-2 border-sakura-300 text-sakura-600 hover:bg-sakura-50 font-semibold text-sm sm:text-base shadow-sm hover:shadow transition-all duration-300 flex items-center justify-center space-x-2 active:scale-95 cursor-pointer">
+              <i class="fa-solid fa-clover text-emerald-500 text-base sm:text-lg"></i>
+              <span>Rút quẻ may mắn mùa thi 12 🍀</span>
+            </button>
+
+          </div>
+
+          <!-- Hug counter badge -->
+          <div id="hugCounterBox" class="mt-3 sm:mt-4 text-center text-xs font-semibold text-sakura-600 opacity-0 transition-opacity">
+            <span id="hugCounterText">Đã gửi cho Đậu 0 cái ôm ấm áp rồi nè! 💖</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= MODAL: RÚT QUẺ MÙA THI 12 ================= -->
+  <div id="fortuneModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="glass-card max-w-sm w-full rounded-3xl p-5 sm:p-8 text-center relative transform scale-95 transition-transform duration-300 shadow-2xl max-h-[90dvh] overflow-y-auto">
+      <!-- Close button -->
+      <button id="closeFortuneBtn" class="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors cursor-pointer active:scale-95">
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+
+      <!-- Icon -->
+      <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-full bg-gradient-to-tr from-sakura-400 to-rose-400 flex items-center justify-center text-white text-2xl sm:text-3xl mb-3 sm:mb-4 shadow-lg shadow-sakura-200 animate-bounce-cute">
+        <span id="fortuneEmoji">🍀</span>
+      </div>
+
+      <!-- Title -->
+      <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-sakura-500">Quẻ May Mắn Mùa Thi 12</span>
+      <h4 id="fortuneTitle" class="font-serif text-xl sm:text-2xl font-bold text-slate-800 mt-1 mb-2 sm:mb-3">Quẻ Đại Cát</h4>
+
+      <!-- Quote -->
+      <p id="fortuneMessage" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6 font-medium">
+        "Đậu ôn đâu trúng đó, thi môn nào cũng rực rỡ và đỗ ngay nguyện vọng 1 trường đại học mơ ước! 🎉"
+      </p>
+
+      <!-- Draw Again -->
+      <button id="drawAgainBtn" class="w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-rose-500 to-sakura-500 hover:from-rose-600 hover:to-sakura-600 text-white font-semibold text-xs sm:text-sm shadow-md active:scale-95 transition-all cursor-pointer">
+        Rút thêm quẻ nữa ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: PHÓNG TO ẢNH POLAROID (MOBILE LIGHTBOX) ================= -->
+  <div id="imageLightbox" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="relative max-w-lg w-full flex flex-col items-center">
+      <button id="closeLightboxBtn" class="self-end mb-2 w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center text-lg active:scale-95 cursor-pointer transition-all">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="bg-white p-2.5 sm:p-3 pb-4 sm:pb-5 rounded-2xl shadow-2xl max-w-full">
+        <img id="lightboxImg" src="" alt="Ảnh của Đậu" class="max-h-[65dvh] sm:max-h-[75dvh] w-auto mx-auto rounded-xl object-contain shadow-inner" />
+        <p id="lightboxCaption" class="mt-3 font-handwriting text-lg sm:text-2xl text-center text-slate-800 font-bold px-2"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Autoplay Touch Helper for Mobile -->
+  <div id="tapPlayHint" class="hidden fixed bottom-6 inset-x-4 max-w-[280px] mx-auto z-40 glass-pill px-4 py-2.5 rounded-full text-center text-xs font-bold text-sakura-600 shadow-xl border border-sakura-300 animate-bounce cursor-pointer flex items-center justify-center space-x-2">
+    <i class="fa-solid fa-music text-rose-500 animate-pulse"></i>
+    <span>Chạm để bật nhạc Bolero ✨</span>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative z-20 w-full py-4 text-center text-xs text-slate-400">
+    <span>Made with all my heart for Bé Đậu • Ngày 20/10 Yêu Thương 🤍</span>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ==========================================================================
+       1. CANVAS PETALS & SPARKLES ANIMATION (MOBILE-OPTIMIZED)
+       ========================================================================== */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    function handleResize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', () => setTimeout(handleResize, 150));
+
+    class Petal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * -height * 0.5;
+        this.size = Math.random() * 7 + 7;
+        this.speedY = Math.random() * 1.1 + 0.7;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.7;
+        this.angle = Math.random() * 360;
+        this.spin = (Math.random() - 0.5) * 1.5;
+        this.color = Math.random() > 0.4 ? 'rgba(254, 205, 211, 0.85)' : 'rgba(253, 164, 181, 0.75)';
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += Math.sin(this.y * 0.01) * 0.7;
+        this.angle += this.spin;
+        if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.angle * Math.PI) / 180);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size, this.size / 3, 0, this.size);
+        ctx.bezierCurveTo(this.size, this.size / 3, this.size / 2, -this.size / 2, 0, 0);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    class Sparkle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.alpha = Math.random() * 0.8 + 0.2;
+        this.fadeSpeed = (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1);
+      }
+      update() {
+        this.alpha += this.fadeSpeed;
+        if (this.alpha <= 0.1 || this.alpha >= 0.9) {
+          this.fadeSpeed = -this.fadeSpeed;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.fillStyle = `rgba(251, 191, 36, ${this.alpha})`;
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(251, 191, 36, 0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const isMobileDevice = window.innerWidth < 640;
+    const petals = Array.from({ length: isMobileDevice ? 18 : 30 }, () => new Petal());
+    const sparkles = Array.from({ length: isMobileDevice ? 14 : 22 }, () => new Sparkle());
+
+    function animateScene() {
+      ctx.clearRect(0, 0, width, height);
+      sparkles.forEach(s => { s.update(); s.draw(); });
+      petals.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateScene);
+    }
+    animateScene();
+
+
+    /* ==========================================================================
+       2. BOLERO TRỮ TÌNH PLAYLIST
+       ========================================================================== */
+    const playlist = [
+      {
+        title: 'Sầu Tím Thiệp Hồng',
+        artist: 'Quang Lê & Lệ Quyên',
+        src: './assets/music.mp3'
+      },
+      {
+        title: 'Gõ Cửa Trái Tim',
+        artist: 'Quang Lê & Mai Thiên Vân',
+        src: './assets/music2.mp3'
+      },
+      {
+        title: 'Về Đâu Mái Tóc Người Thương',
+        artist: 'Quang Lê',
+        src: './assets/music3.mp3'
+      }
+    ];
+
+    let currentTrackIdx = 0;
+    let isPlayingAudio = false;
+    const realAudio = new Audio();
+    realAudio.preload = 'auto';
+
+    const playerSongTitle = document.getElementById('playerSongTitle');
+    const playerArtist = document.getElementById('playerArtist');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playPauseIcon = document.getElementById('playPauseIcon');
+    const prevTrackBtn = document.getElementById('prevTrackBtn');
+    const nextTrackBtn = document.getElementById('nextTrackBtn');
+    const vinylDisc = document.getElementById('vinylDisc');
+    const musicIcon = document.getElementById('musicIcon');
+    const eqVisualizer = document.getElementById('eqVisualizer');
+    const playerLiveDot = document.getElementById('playerLiveDot');
+    const tapPlayHint = document.getElementById('tapPlayHint');
+
+    function updateTrackUI() {
+      const cur = playlist[currentTrackIdx];
+      playerSongTitle.textContent = cur.title;
+      playerArtist.textContent = cur.artist;
+    }
+
+    function playTrack(idx) {
+      currentTrackIdx = (idx + playlist.length) % playlist.length;
+      updateTrackUI();
+      realAudio.src = playlist[currentTrackIdx].src;
+      
+      const p = realAudio.play();
+      if (p !== undefined) {
+        p.then(() => {
+          setPlayerPlayingState(true);
+          if (tapPlayHint) tapPlayHint.remove();
+        }).catch(err => {
+          console.warn('Playback error or policy restriction:', err);
+        });
+      }
+    }
+
+    function toggleMusic() {
+      if (isPlayingAudio) {
+        realAudio.pause();
+        setPlayerPlayingState(false);
+      } else {
+        if (!realAudio.src || realAudio.src === '' || realAudio.src.endsWith('#')) {
+          playTrack(currentTrackIdx);
+        } else {
+          realAudio.play().then(() => {
+            setPlayerPlayingState(true);
+            if (tapPlayHint) tapPlayHint.remove();
+          }).catch(err => {
+            console.warn('Audio play error:', err);
+          });
+        }
+      }
+    }
+
+    function setPlayerPlayingState(playing) {
+      isPlayingAudio = playing;
+      if (playing) {
+        playPauseIcon.classList.remove('fa-play', 'ml-0.5');
+        playPauseIcon.classList.add('fa-pause');
+        vinylDisc.classList.add('animate-spin-slow');
+        musicIcon.classList.add('text-rose-400');
+        if (eqVisualizer) {
+          eqVisualizer.classList.remove('hidden');
+          eqVisualizer.classList.add('md:flex');
+        }
+        playerLiveDot.classList.remove('hidden');
+        if (tapPlayHint) tapPlayHint.remove();
+      } else {
+        playPauseIcon.classList.remove('fa-pause');
+        playPauseIcon.classList.add('fa-play', 'ml-0.5');
+        vinylDisc.classList.remove('animate-spin-slow');
+        if (eqVisualizer) {
+          eqVisualizer.classList.add('hidden');
+          eqVisualizer.classList.remove('md:flex');
+        }
+        playerLiveDot.classList.add('hidden');
+      }
+    }
+
+    realAudio.addEventListener('ended', () => {
+      playTrack(currentTrackIdx + 1);
+    });
+
+    playPauseBtn.addEventListener('click', toggleMusic);
+    vinylDisc.addEventListener('click', toggleMusic);
+    nextTrackBtn.addEventListener('click', () => playTrack(currentTrackIdx + 1));
+    prevTrackBtn.addEventListener('click', () => playTrack(currentTrackIdx - 1));
+
+    // Initialize track name
+    updateTrackUI();
+
+    /* ==========================================================================
+       INSTANT AUDIO AUTOPLAY & WELCOME SPLASH CONTROLLER
+       ========================================================================== */
+    const welcomeSplash = document.getElementById('welcomeSplash');
+    const startBtn = document.getElementById('startExperienceBtn');
+
+    function enterAndPlayMusic() {
+      if (!isPlayingAudio) {
+        realAudio.play().then(() => {
+          setPlayerPlayingState(true);
+        }).catch(e => {
+          console.warn('Audio play error:', e);
+        });
+      }
+
+      // Confetti burst
+      triggerRomanticConfetti();
+
+      // Smooth fade out
+      if (welcomeSplash) {
+        welcomeSplash.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => welcomeSplash.remove(), 700);
+      }
+      if (tapPlayHint) tapPlayHint.remove();
+    }
+
+    if (startBtn) {
+      startBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        enterAndPlayMusic();
+      });
+    }
+
+    if (welcomeSplash) {
+      welcomeSplash.addEventListener('click', () => {
+        enterAndPlayMusic();
+      });
+    }
+
+    function attemptAutoplayOnEntry() {
+      realAudio.src = playlist[0].src;
+      
+      const playPromise = realAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // If browser allowed autoplay without click, automatically dismiss splash screen!
+          setPlayerPlayingState(true);
+          if (welcomeSplash) {
+            welcomeSplash.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => welcomeSplash.remove(), 500);
+          }
+          if (tapPlayHint) tapPlayHint.remove();
+        }).catch(err => {
+          console.log('Browser requires user interaction to play unmuted audio. Splash screen ready.');
+          
+          // One-touch anywhere on the window will also play
+          const unlockAnywhere = () => {
+            enterAndPlayMusic();
+            ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'].forEach(ev => {
+              window.removeEventListener(ev, unlockAnywhere);
+            });
+          };
+
+          ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'].forEach(ev => {
+            window.addEventListener(ev, unlockAnywhere, { once: true, passive: true });
+          });
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attemptAutoplayOnEntry);
+    } else {
+      attemptAutoplayOnEntry();
+    }
+
+
+    /* ==========================================================================
+       3. ENVELOPE OPENING & LETTER REVEAL INTERACTION
+       ========================================================================== */
+    const envelopeTrigger = document.getElementById('envelopeTrigger');
+    const waxSealBtn = document.getElementById('waxSealBtn');
+    const envelopeEl = document.getElementById('envelopeEl');
+    const envelopeView = document.getElementById('envelopeView');
+    const letterView = document.getElementById('letterView');
+    const foldBackBtn = document.getElementById('foldBackBtn');
+
+    function openEnvelope() {
+      // 1. Trigger rich confetti heart bursts
+      triggerRomanticConfetti();
+
+      // 2. Open Envelope 3D flap
+      envelopeEl.classList.add('open');
+      waxSealBtn.style.opacity = '0';
+      waxSealBtn.style.transform = 'translate(-50%, -50%) scale(0)';
+
+      // Auto ensure music is playing
+      if (!isPlayingAudio) {
+        playTrack(currentTrackIdx);
+      }
+
+      // 3. Slide up into Letter View
+      setTimeout(() => {
+        envelopeView.classList.add('opacity-0', '-translate-y-6', 'pointer-events-none');
+        
+        setTimeout(() => {
+          envelopeView.classList.add('hidden');
+          letterView.classList.remove('hidden');
+          
+          requestAnimationFrame(() => {
+            letterView.classList.remove('opacity-0', 'translate-y-8');
+            letterView.classList.add('opacity-100', 'translate-y-0');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }, 500);
+      }, 650);
+    }
+
+    envelopeTrigger.addEventListener('click', openEnvelope);
+
+    // Fold back functionality
+    foldBackBtn.addEventListener('click', () => {
+      letterView.classList.add('opacity-0', 'translate-y-8');
+      
+      setTimeout(() => {
+        letterView.classList.add('hidden');
+        envelopeView.classList.remove('hidden');
+        
+        requestAnimationFrame(() => {
+          envelopeEl.classList.remove('open');
+          waxSealBtn.style.opacity = '1';
+          waxSealBtn.style.transform = 'translate(-50%, -50%) scale(1)';
+          envelopeView.classList.remove('opacity-0', '-translate-y-6', 'pointer-events-none');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }, 500);
+    });
+
+    // Romantic Confetti Explosion
+    function triggerRomanticConfetti() {
+      const count = 180;
+      const defaults = {
+        origin: { y: 0.65 },
+        spread: 80,
+        ticks: 200,
+        gravity: 0.8,
+        colors: ['#f43f5e', '#fb7185', '#fda4af', '#fecdd3', '#fbbf24', '#ffffff']
+      };
+
+      confetti({
+        ...defaults,
+        particleCount: Math.floor(count * 0.6),
+        scalar: 1.2,
+        shapes: ['circle']
+      });
+
+      confetti({
+        ...defaults,
+        particleCount: Math.floor(count * 0.4),
+        scalar: 1.6,
+        shapes: ['circle', 'square']
+      });
+    }
+
+
+    /* ==========================================================================
+       4. INTERACTIVE "SEND HUGS" BUTTON
+       ========================================================================== */
+    const sendHugBtn = document.getElementById('sendHugBtn');
+    const hugCounterBox = document.getElementById('hugCounterBox');
+    const hugCounterText = document.getElementById('hugCounterText');
+    let hugCount = 0;
+
+    const hugIcons = ['❤️', '💖', '🌸', '🫂', '✨', '💐', '🥰'];
+
+    sendHugBtn.addEventListener('click', (e) => {
+      hugCount += 10;
+      hugCounterBox.classList.remove('opacity-0');
+      hugCounterText.textContent = `Đã nạp ${hugCount} cái ôm ấm áp & năng lượng cho Đậu rồi nè! 💖`;
+
+      const rect = sendHugBtn.getBoundingClientRect();
+      const clickX = e.clientX || rect.left + rect.width / 2;
+      const clickY = e.clientY || rect.top;
+
+      for (let i = 0; i < 8; i++) {
+        createFlyingHeart(clickX, clickY);
+      }
+
+      confetti({
+        particleCount: 15,
+        spread: 60,
+        origin: {
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight
+        },
+        colors: ['#f43f5e', '#ec4899', '#fda4af']
+      });
+    });
+
+    function createFlyingHeart(x, y) {
+      const el = document.createElement('div');
+      el.className = 'flying-heart text-2xl select-none';
+      el.textContent = hugIcons[Math.floor(Math.random() * hugIcons.length)];
+      
+      const tx = (Math.random() - 0.5) * 160 + 'px';
+      const ty = -(Math.random() * 120 + 80) + 'px';
+      const rot = (Math.random() - 0.5) * 60 + 'deg';
+      
+      el.style.setProperty('--tx', tx);
+      el.style.setProperty('--ty', ty);
+      el.style.setProperty('--rot', rot);
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+    }
+
+
+    /* ==========================================================================
+       5. FORTUNE DRAW (RÚT QUẺ MAY MẮN MÙA THI 12)
+       ========================================================================== */
+    const fortunes = [
+      {
+        emoji: '🌟',
+        title: 'Quẻ Đại Cát • Thủ Khoa Tương Lai',
+        msg: 'Đậu ôn đâu trúng đó! Mọi công sức thức khuya giải đề sẽ được đền đáp xứng đáng bằng tấm vé đỗ thẳng nguyện vọng 1! 🎉'
+      },
+      {
+        emoji: '🍀',
+        title: 'Quẻ May Mắn • Thần Rùa Hộ Mệnh',
+        msg: 'Đi thi gặp đề quen thuộc, câu nào khó thì khoanh bừa cũng trúng phóc! Tinh thần thép, không áp lực! 📚'
+      },
+      {
+        emoji: '💖',
+        title: 'Quẻ Bình Yên • Có Anh Bên Cạnh',
+        msg: 'Dù ngoài kia bài thi có khó khăn thế nào, Đậu luôn có anh ở đây làm hậu phương, đồng hành và thương Đậu vô điều kiện! 🤍'
+      },
+      {
+        emoji: '🌸',
+        title: 'Quẻ Rạng Rỡ • Nụ Cười Tuổi 18',
+        msg: 'Năm học cuối cấp sẽ là quãng thời gian rực rỡ và đẹp đẽ nhất. Chúc Đậu mỗi ngày đi học đều tràn ngập niềm vui! ✨'
+      },
+      {
+        emoji: '🍰',
+        title: 'Quẻ Ngọt Ngào • Ăn Mãi Không Mập',
+        msg: 'Học thi mệt là có trà sữa và đồ ăn ngon! Đậu luôn luôn xinh đẹp, đáng yêu và tràn đầy năng lượng tích cực! 🥰'
+      }
+    ];
+
+    const drawFortuneBtn = document.getElementById('drawFortuneBtn');
+    const fortuneModal = document.getElementById('fortuneModal');
+    const closeFortuneBtn = document.getElementById('closeFortuneBtn');
+    const drawAgainBtn = document.getElementById('drawAgainBtn');
+    const fortuneEmoji = document.getElementById('fortuneEmoji');
+    const fortuneTitle = document.getElementById('fortuneTitle');
+    const fortuneMessage = document.getElementById('fortuneMessage');
+
+    function showRandomFortune() {
+      const item = fortunes[Math.floor(Math.random() * fortunes.length)];
+      fortuneEmoji.textContent = item.emoji;
+      fortuneTitle.textContent = item.title;
+      fortuneMessage.textContent = `"${item.msg}"`;
+
+      fortuneModal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        fortuneModal.classList.remove('opacity-0');
+        fortuneModal.querySelector('.glass-card').classList.remove('scale-95');
+        fortuneModal.querySelector('.glass-card').classList.add('scale-100');
+      });
+
+      confetti({
+        particleCount: 25,
+        spread: 50,
+        origin: { y: 0.5 }
+      });
+    }
+
+    drawFortuneBtn.addEventListener('click', showRandomFortune);
+    drawAgainBtn.addEventListener('click', showRandomFortune);
+
+    function closeFortune() {
+      fortuneModal.classList.add('opacity-0');
+      fortuneModal.querySelector('.glass-card').classList.remove('scale-100');
+      fortuneModal.querySelector('.glass-card').classList.add('scale-95');
+      setTimeout(() => fortuneModal.classList.add('hidden'), 300);
+    }
+
+    closeFortuneBtn.addEventListener('click', closeFortune);
+    fortuneModal.addEventListener('click', (e) => {
+      if (e.target === fortuneModal) closeFortune();
+    });
+
+    /* ==========================================================================
+       6. POLAROID IMAGE LIGHTBOX (MOBILE PREVIEW)
+       ========================================================================== */
+    const imageLightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+    const polaroidCards = document.querySelectorAll('.polaroid-card');
+
+    polaroidCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const img = card.querySelector('img');
+        const caption = card.querySelector('p');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxCaption.textContent = caption ? caption.textContent.trim() : 'Khoảnh khắc đáng yêu của Đậu 💕';
+          imageLightbox.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            imageLightbox.classList.remove('opacity-0');
+          });
+        }
+      });
+    });
+
+    function closeLightbox() {
+      if (!imageLightbox) return;
+      imageLightbox.classList.add('opacity-0');
+      setTimeout(() => imageLightbox.classList.add('hidden'), 300);
+    }
+
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+    if (imageLightbox) {
+      imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) closeLightbox();
+      });
+    }
+
+    /* ==========================================================================
+       7. TOUCH & CLICK SPARKS EVERYWHERE ON MOBILE
+       ========================================================================== */
+    function spawnTouchSpark(x, y) {
+      const icons = ['🌸', '💖', '✨', '💕', '🌷'];
+      const el = document.createElement('div');
+      el.textContent = icons[Math.floor(Math.random() * icons.length)];
+      el.style.position = 'fixed';
+      el.style.left = (x - 10) + 'px';
+      el.style.top = (y - 10) + 'px';
+      el.style.fontSize = (Math.random() * 8 + 18) + 'px';
+      el.style.zIndex = '9999';
+      el.style.pointerEvents = 'none';
+      el.style.userSelect = 'none';
+      el.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      el.style.opacity = '1';
+      document.body.appendChild(el);
+
+      const destX = (Math.random() - 0.5) * 80;
+      const destY = -(Math.random() * 70 + 40);
+
+      requestAnimationFrame(() => {
+        el.style.transform = `translate(${destX}px, ${destY}px) scale(1.3) rotate(${Math.random() * 40 - 20}deg)`;
+        el.style.opacity = '0';
+      });
+
+      setTimeout(() => el.remove(), 1250);
+    }
+
+    document.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button, input, a, .wax-seal, #envelopeTrigger, #vinylDisc')) return;
+      spawnTouchSpark(e.clientX, e.clientY);
+    }, { passive: true });
+  </script>
+</body>
+</html>
