@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>20/10 Tặng Chị Yêu Xinh Đẹp 💖 Trà Sữa & Vạn Điều May Mắn</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧋</text></svg>">
+
+  <!-- Google Fonts: Dancing Script (Handwriting), Playfair Display (Serif), Quicksand (Clean Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+            handwriting: ['"Dancing Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            lilac: {
+              50: '#fbf9ff',
+              100: '#f5f0fe',
+              200: '#ebe2fd',
+              300: '#dac7fb',
+              400: '#bfa8f5',
+              500: '#9d8df1',
+              600: '#845ec2',
+              700: '#6b3ea8',
+              800: '#552d8c',
+              900: '#431f72',
+            },
+            babypink: {
+              50: '#fff5f7',
+              100: '#ffe4e8',
+              200: '#fecdd6',
+              300: '#fda4b5',
+              400: '#ff92a5',
+              500: '#ff6f91',
+              600: '#e14674',
+              700: '#b82756',
+            },
+            softmint: {
+              50: '#f4faf8',
+              100: '#e6f5f1',
+              200: '#d1ece4',
+              300: '#bee3db',
+              400: '#a3d4cb',
+              500: '#7cbdb1',
+            }
+          },
+          animation: {
+            'float-gentle': 'floatGentle 6s ease-in-out infinite',
+            'float-reverse': 'floatReverse 7s ease-in-out infinite',
+            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+            'spin-slow': 'spin 16s linear infinite',
+            'heart-beat': 'heartBeat 1.8s ease-in-out infinite',
+            'boba-bounce': 'bobaBounce 2s ease-in-out infinite',
+            'wiggle': 'wiggle 0.5s ease-in-out',
+          },
+          keyframes: {
+            floatGentle: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-8px) rotate(1.2deg)' },
+            },
+            floatReverse: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(-1.5deg)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+              '50%': { opacity: '0.92', transform: 'scale(1.03)' },
+            },
+            heartBeat: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '14%': { transform: 'scale(1.18)' },
+              '28%': { transform: 'scale(1)' },
+              '42%': { transform: 'scale(1.12)' },
+              '70%': { transform: 'scale(1)' },
+            },
+            bobaBounce: {
+              '0%, 100%': { transform: 'translateY(0) scale(1)' },
+              '50%': { transform: 'translateY(-6px) scale(1.03)' },
+            },
+            wiggle: {
+              '0%, 100%': { transform: 'rotate(0deg)' },
+              '25%': { transform: 'rotate(-6deg)' },
+              '75%': { transform: 'rotate(6deg)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- canvas-confetti CDN for celebration effects -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at 50% 12%, #fbf9ff 0%, #f4f0ff 35%, #ece4ff 70%, #fae8ff 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #3b334d;
+      padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+
+    /* Ambient Pastel Stars & Sparkles Canvas */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glassmorphism Styles with Lavender Lilac Accent */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 50px -12px rgba(157, 141, 241, 0.22),
+                  0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                  0 8px 24px -6px rgba(132, 94, 194, 0.12);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 16px rgba(157, 141, 241, 0.14);
+    }
+
+    /* Realistic 3D Envelope Styling (Lavender Theme) */
+    .envelope-wrapper {
+      perspective: 1200px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .envelope {
+      position: relative;
+      width: 290px;
+      height: 200px;
+      background: linear-gradient(135deg, #e4daf9 0%, #c9b4f6 100%);
+      border-radius: 14px;
+      box-shadow: 0 18px 40px -10px rgba(132, 94, 194, 0.38),
+                  0 10px 20px -5px rgba(157, 141, 241, 0.2);
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @media (min-width: 360px) {
+      .envelope {
+        width: 320px;
+        height: 220px;
+        border-radius: 16px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope {
+        width: 440px;
+        height: 290px;
+      }
+    }
+
+    .envelope-wrapper:hover .envelope {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    /* Envelope Top Flap */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 145px solid transparent;
+      border-right: 145px solid transparent;
+      border-top: 120px solid #9d8df1;
+      transform-origin: top center;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+      filter: drop-shadow(0 4px 6px rgba(85, 45, 140, 0.18));
+    }
+
+    @media (min-width: 360px) {
+      .envelope-flap {
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-top: 130px solid #9d8df1;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope-flap {
+        border-left: 220px solid transparent;
+        border-right: 220px solid transparent;
+        border-top: 165px solid #9d8df1;
+      }
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    /* Envelope Pocket */
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (min-width: 360px) {
+      .envelope-pocket {
+        border-radius: 16px;
+      }
+    }
+
+    .envelope-pocket::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 145px solid #bfa8f5;
+      border-right: 145px solid #bfa8f5;
+      border-top: 100px solid transparent;
+      border-bottom: 100px solid #845ec2;
+    }
+
+    @media (min-width: 360px) {
+      .envelope-pocket::before {
+        border-left: 160px solid #bfa8f5;
+        border-right: 160px solid #bfa8f5;
+        border-top: 110px solid transparent;
+        border-bottom: 110px solid #845ec2;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .envelope-pocket::before {
+        border-left: 220px solid #bfa8f5;
+        border-right: 220px solid #bfa8f5;
+        border-top: 145px solid transparent;
+        border-bottom: 145px solid #845ec2;
+      }
+    }
+
+    /* Lavender Wax Seal */
+    .wax-seal {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      background: radial-gradient(circle at 35% 35%, #b39cd0 0%, #845ec2 65%, #552d8c 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(85, 45, 140, 0.45),
+                  0 0 0 3px rgba(235, 226, 253, 0.85),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                  inset 0 -3px 6px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @media (min-width: 360px) {
+      .wax-seal {
+        top: 98px;
+        width: 82px;
+        height: 82px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .wax-seal {
+        top: 130px;
+        width: 96px;
+        height: 96px;
+      }
+    }
+
+    .wax-seal:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 12px 28px rgba(85, 45, 140, 0.65),
+                  0 0 0 5px rgba(235, 226, 253, 0.95);
+    }
+
+    .wax-seal:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    /* Polaroid Photo Card */
+    .polaroid-card {
+      background: #ffffff;
+      padding: 12px 12px 18px 12px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px -5px rgba(132, 94, 194, 0.2),
+                  0 0 0 1px rgba(0, 0, 0, 0.04);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .polaroid-card:hover, .polaroid-card:active {
+      transform: translateY(-6px) scale(1.02) rotate(0deg) !important;
+      box-shadow: 0 22px 45px -8px rgba(157, 141, 241, 0.3),
+                  0 0 0 2px rgba(186, 168, 245, 0.6);
+      z-index: 20;
+    }
+
+    /* Pastel Mint & Pink Washi Tape */
+    .washi-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(1.2deg);
+      width: 110px;
+      height: 24px;
+      background: linear-gradient(90deg, rgba(190, 227, 219, 0.9) 0%, rgba(254, 205, 214, 0.9) 100%);
+      border-left: 3px dashed rgba(132, 94, 194, 0.45);
+      border-right: 3px dashed rgba(132, 94, 194, 0.45);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      z-index: 10;
+    }
+
+    /* Flying Particle Animation */
+    .flying-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      animation: flyUpAndFade 1.6s ease-out forwards;
+    }
+
+    @keyframes flyUpAndFade {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.6) rotate(0deg);
+      }
+      50% {
+        opacity: 0.95;
+        transform: translate(var(--tx), var(--ty)) scale(1.25) rotate(var(--rot));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(var(--tx) * 1.3), -130px) scale(1.5) rotate(calc(var(--rot) * 2));
+      }
+    }
+
+    /* Flip Voucher 3D Container */
+    .voucher-card-container {
+      perspective: 1200px;
+    }
+
+    .voucher-card-inner {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .voucher-card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .voucher-front, .voucher-back {
+      width: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 1.25rem;
+    }
+
+    .voucher-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateY(180deg);
+      min-height: 100%;
+    }
+
+    /* Highlight Quote Block */
+    .quote-highlight {
+      background: linear-gradient(120deg, rgba(245, 240, 254, 0.7) 0%, rgba(254, 205, 214, 0.4) 100%);
+      border-left: 4px solid #845ec2;
+      border-radius: 0 14px 14px 0;
+    }
+
+    /* Boba Cup SVG animations */
+    .boba-straw {
+      transform-origin: bottom center;
+      transition: transform 0.3s ease;
+    }
+    .boba-cup-box:hover .boba-straw {
+      transform: rotate(-3deg);
+    }
+
+    /* Fortune Stick Reveal Box */
+    .fortune-card {
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .fortune-card.revealing {
+      transform: scale(0.92) rotate(-2deg);
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body class="relative min-h-screen text-stone-700 flex flex-col justify-between selection:bg-lilac-200 selection:text-lilac-900">
+
+  <!-- Floating Sparkles, Hearts & Pastel Stars Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Ambient Glowing Blobs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-lilac-300/35 rounded-full blur-3xl pointer-events-none animate-pulse-soft z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[320px] sm:w-[520px] h-[320px] sm:h-[520px] bg-babypink-300/30 rounded-full blur-3xl pointer-events-none animate-pulse-soft z-0" style="animation-delay: 1.5s;"></div>
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-softmint-200/25 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+  <!-- ================= TOP HEADER / CONTROLS ================= -->
+  <header class="relative z-30 w-full px-3 sm:px-8 py-3 sm:py-4 flex items-center justify-between max-w-5xl mx-auto gap-2">
+    <!-- Brand / Navigation Badge -->
+    <div class="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
+      <a href="../index.html" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 shadow-sm border border-lilac-200 flex items-center justify-center text-lilac-600 text-base sm:text-lg hover:scale-105 transition-transform" title="Trang chủ">
+        <i class="fa-solid fa-house text-lilac-500"></i>
+      </a>
+      <div class="flex flex-col">
+        <span class="text-[9px] sm:text-xs tracking-wider uppercase font-bold text-lilac-700">20 Tháng 10 • Kính Tặng</span>
+        <span class="font-handwriting text-lg sm:text-2xl font-bold text-stone-800 leading-tight">Chị Xinh Đẹp 💖</span>
+      </div>
+    </div>
+
+    <!-- Vinyl Mini Music Player -->
+    <div class="glass-pill px-2.5 py-1 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-3 shadow-md border border-lilac-200 shrink-0">
+      <!-- Spinning Vinyl Disc -->
+      <div id="vinylDisc" class="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-stone-900 border-2 border-lilac-300 flex items-center justify-center cursor-pointer shadow-sm transition-transform active:scale-95" title="Bật/Tạm dừng nhạc">
+        <i id="musicIcon" class="fa-solid fa-compact-disc text-lilac-400 text-sm sm:text-xl"></i>
+        <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-babypink-400"></div>
+      </div>
+
+      <!-- Song Info -->
+      <div class="flex flex-col text-left max-w-[85px] xs:max-w-[125px] sm:max-w-[180px] select-none">
+        <div class="flex items-center space-x-1">
+          <span id="playerLiveDot" class="inline-block w-1.5 h-1.5 rounded-full bg-babypink-500 animate-ping"></span>
+          <span id="playerSongTitle" class="text-[11px] sm:text-sm font-bold text-stone-800 truncate">Bật Tình Yêu Lên</span>
+        </div>
+        <span id="playerArtist" class="text-[8px] sm:text-[10px] text-stone-500 truncate">Tăng Duy Tân & Hòa Minzy</span>
+      </div>
+
+      <!-- Equalizer Visualizer Bars -->
+      <div id="eqVisualizer" class="hidden md:flex items-end space-x-0.5 h-3.5">
+        <span class="w-1 bg-lilac-500 rounded-full animate-bounce" style="height: 12px; animation-duration: 0.6s;"></span>
+        <span class="w-1 bg-babypink-400 rounded-full animate-bounce" style="height: 8px; animation-duration: 0.4s; animation-delay: 0.15s;"></span>
+        <span class="w-1 bg-softmint-400 rounded-full animate-bounce" style="height: 14px; animation-duration: 0.7s; animation-delay: 0.3s;"></span>
+      </div>
+
+      <!-- Play / Pause Button -->
+      <div class="flex items-center space-x-1 sm:space-x-1.5">
+        <button id="playPauseBtn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-lilac-600 to-babypink-400 hover:from-lilac-700 hover:to-babypink-500 text-white flex items-center justify-center text-[10px] sm:text-xs shadow-md shadow-lilac-200 active:scale-95 transition-all cursor-pointer" title="Phát / Tạm dừng">
+          <i id="playPauseIcon" class="fa-solid fa-play ml-0.5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="relative z-20 flex-grow flex items-center justify-center px-3 sm:px-4 py-4 sm:py-10 w-full">
+    <div class="w-full max-w-4xl mx-auto flex flex-col items-center">
+
+      <!-- ================= 1. ENVELOPE VIEW (PHONG BÌ 3D LAVENDER) ================= -->
+      <section id="envelopeView" class="w-full flex flex-col items-center text-center transition-all duration-700 px-2 sm:px-0">
+        
+        <!-- Welcome Tag -->
+        <div class="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/85 border border-lilac-200 text-lilac-700 text-[11px] sm:text-sm font-semibold shadow-sm mb-4 sm:mb-6 animate-float-gentle">
+          <span class="inline-block w-2 h-2 rounded-full bg-babypink-400 animate-ping"></span>
+          <span>Bưu thiếp đặc biệt gửi Nóc Nhà Quyền Lực Số 1 💌</span>
+        </div>
+
+        <h1 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-stone-800 tracking-tight leading-tight mb-2">
+          Tặng <span class="font-handwriting text-3xl sm:text-5xl md:text-6xl text-lilac-600">Chị</span> Xinh Đẹp 💖
+        </h1>
+        <p class="text-stone-600 text-xs sm:text-base max-w-md mx-auto mb-6 sm:mb-10 px-2 leading-relaxed">
+          Bức thư chứa đầy lời chúc phát tài phát lộc, trà sữa full topping và đặc quyền VIP ngày 20/10. Chạm vào con dấu Lavender để mở thư ngay nhé!
+        </p>
+
+        <!-- 3D Realistic Envelope Wrapper -->
+        <div class="envelope-wrapper my-3 sm:my-4" id="envelopeTrigger">
+          <div class="envelope" id="envelopeEl">
+            <!-- Flap -->
+            <div class="envelope-flap"></div>
+            <!-- Pocket -->
+            <div class="envelope-pocket"></div>
+
+            <!-- Lavender Wax Seal Button -->
+            <div class="wax-seal" id="waxSealBtn" title="Chạm để mở thư">
+              <i class="fa-solid fa-sparkles text-amber-200 text-lg sm:text-2xl drop-shadow mb-0.5 animate-heart-beat"></i>
+              <span class="text-[7px] sm:text-[9px] font-bold tracking-wider text-purple-100 uppercase text-center leading-tight">Tặng Chị 💌</span>
+            </div>
+
+            <!-- Letter Peek Preview -->
+            <div class="absolute inset-x-3 sm:inset-x-4 top-2 bottom-4 bg-white/95 rounded-t-lg shadow-inner border border-lilac-100 flex flex-col items-center justify-center p-2 sm:p-3 opacity-90 pointer-events-none">
+              <i class="fa-solid fa-mug-hot text-lilac-400 text-xl sm:text-2xl mb-1"></i>
+              <span class="font-handwriting text-lilac-600 text-xs sm:text-sm">Chúc Chị 20/10 xinh đẹp & giàu có...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 flex items-center justify-center space-x-2 text-xs sm:text-sm text-stone-500">
+          <i class="fa-solid fa-arrow-pointer text-lilac-500 animate-bounce"></i>
+          <span>Chạm vào <b>con dấu Lavender</b> để mở bức thư</span>
+        </div>
+      </section>
+
+      <!-- ================= 2. LETTER VIEW (BỨC THƯ & TƯƠNG TÁC) ================= -->
+      <section id="letterView" class="hidden w-full transition-all duration-700 opacity-0 transform translate-y-8 px-1 sm:px-0">
+        
+        <!-- Action Bar: Fold back & Quick Links -->
+        <div class="w-full flex items-center justify-between mb-3 px-1 sm:px-2">
+          <button id="foldBackBtn" class="glass-pill px-3 py-1.5 rounded-full text-xs font-semibold text-stone-600 hover:text-lilac-600 transition-colors flex items-center space-x-1.5 active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-arrow-left text-lilac-400"></i>
+            <span>Gấp thư lại</span>
+          </button>
+          
+          <div class="text-[11px] sm:text-xs text-lilac-700 font-medium flex items-center space-x-1">
+            <i class="fa-solid fa-crown text-amber-500"></i>
+            <span>Chúc Mừng 20/10 Tặng Chị</span>
+          </div>
+        </div>
+
+        <!-- The Grand Letter Card -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 md:p-12 relative overflow-hidden">
+          
+          <!-- Decorative Background Elements -->
+          <div class="absolute -top-10 -right-10 w-44 h-44 bg-lilac-200/40 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute top-4 right-4 sm:top-8 sm:right-8 opacity-15 pointer-events-none text-lilac-400 text-5xl sm:text-8xl">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+
+          <!-- Postal Stamp Badge -->
+          <div class="flex items-center justify-between border-b border-lilac-100 pb-3 sm:pb-4 mb-5 sm:mb-6">
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-babypink-400"></span>
+              <span class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-lilac-700">Thư Riêng • Tặng Chị Xịn Xò</span>
+            </div>
+            <div class="text-[10px] sm:text-[11px] font-semibold text-stone-500 bg-lilac-50 px-2 sm:px-2.5 py-1 rounded-md border border-lilac-200">
+              20.10 • Độc Quyền VIP
+            </div>
+          </div>
+
+          <!-- Letter Heading -->
+          <div class="mb-5 sm:mb-6">
+            <h2 class="font-handwriting text-2xl sm:text-4xl md:text-5xl font-bold text-lilac-700 leading-tight">
+              Chị yêu dấu của em 🌸,
+            </h2>
+          </div>
+
+          <!-- Letter Body Paragraphs -->
+          <div class="space-y-4 sm:space-y-5 text-stone-700 text-[14px] sm:text-base md:text-lg leading-relaxed font-normal">
+            <p>
+              Hôm nay là <b>ngày Phụ nữ Việt Nam 20/10</b> — một ngày siêu đặc biệt để cả nước tôn vinh phái đẹp, và đương nhiên em không thể nào quên gửi lời chúc xịn xò nhất tới <b>người chị xinh đẹp, tài năng kiêm "nhà tài trợ vàng"</b> của cuộc đời em!
+            </p>
+
+            <p>
+              Nghĩ lại từ bé đến giờ, dù hai chị em thỉnh thoảng có hay chí chóe tranh giành đồ ăn, trêu chọc nhau đủ trò, nhưng trong lòng em lúc nào cũng biết ơn và tự hào vì có Chị. Cảm ơn chị vì luôn che chở, chia sẻ mọi buồn vui và những lúc em kẹt ví thì chị lại hào phóng 'ting ting' cốc trà sữa cứu đói tức thì!
+            </p>
+
+            <p class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-lilac-50/80 border border-lilac-200 text-stone-700 leading-relaxed shadow-sm">
+              ✨ <b class="text-lilac-700">20/10 này, em chúc Chị trọn vẹn những điều tuyệt vời nhất:</b><br />
+              • <b>Nhan sắc:</b> Da luôn căng bóng mướt mịn không tì vết, ngày càng trẻ trung, rạng ngời và xinh đẹp bất chấp camera thường!<br />
+              • <b>Sự nghiệp:</b> Công việc thuận buồm xuôi gió, sếp thương đồng nghiệp quý, dự án nào cũng thành công vang dội!<br />
+              • <b>Tài lộc:</b> Tiền vào tài khoản đếm mỏi tay, ví lúc nào cũng dày cộm, shopping quẹt thẻ không cần nhìn tag giá!<br />
+              • <b>Tình duyên:</b> Sớm tìm được bạch mã hoàng tử siêu tâm lý, vừa đẹp trai, chung tình lại hết lòng chiều chuộng chị (và nhớ biết bao ăn cả em trai nhé hihi)!
+            </p>
+
+            <p>
+              Em chúc Chị lúc nào cũng tràn đầy năng lượng tích cực, ăn thả ga không lo tăng cân, cười nhiều mỗi ngày và luôn là niềm tự hào lớn của cả gia đình mình!
+            </p>
+
+            <!-- Heartfelt Highlight Quote -->
+            <div class="quote-highlight p-4 sm:p-6 my-5 sm:my-7 bg-lilac-100/35">
+              <p class="font-handwriting text-xl sm:text-3xl font-bold text-lilac-700 tracking-wide mb-1.5">
+                "Chị không chỉ là chị gái, mà còn là người bạn đồng hành tuyệt vời nhất! 💖"
+              </p>
+              <p class="text-xs sm:text-sm text-stone-500 italic">
+                Cảm ơn Chị vì đã luôn là chỗ dựa vững chãi và yêu thương em vô điều kiện! Chúc Chị một ngày 20/10 siêu ngọt ngào!
+              </p>
+            </div>
+          </div>
+
+          <!-- Letter Signature -->
+          <div class="mt-6 sm:mt-8 pt-4 border-t border-lilac-100 flex flex-col items-end">
+            <span class="text-xs text-stone-400 italic">Đứa em trai ngoan ngoãn (thỉnh thoảng hơi báo một xíu),</span>
+            <span class="font-handwriting text-2xl sm:text-3xl font-bold text-lilac-700 mt-1">Em của Chị 💌</span>
+          </div>
+
+          <!-- ================= 3. POLAROID FRAME CỦA CHỊ HAI ================= -->
+          <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t-2 border-dashed border-lilac-200">
+            <div class="text-center mb-6 sm:mb-8">
+              <span class="inline-block px-3 py-1 rounded-full bg-lilac-100 text-lilac-700 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-2">
+                📸 Khoảnh Khắc Của Chị
+              </span>
+              <h3 class="font-serif text-xl sm:text-3xl font-bold text-stone-800">
+                Nụ Cười Rạng Rỡ Của Chị Hai
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 mt-1">Chạm vào bức ảnh để phóng to khoảnh khắc xinh đẹp nhất</p>
+            </div>
+
+            <!-- Polaroid Container -->
+            <div class="max-w-md mx-auto px-2">
+              <div class="polaroid-card group cursor-pointer w-full" id="sisterPolaroidCard" style="transform: rotate(1.2deg);">
+                <!-- Washi Tape at Top -->
+                <div class="washi-tape"></div>
+
+                <!-- Image container with 3:2 ratio -->
+                <div class="w-full aspect-[3/2] rounded-md overflow-hidden bg-stone-100 relative shadow-inner">
+                  <img 
+                    src="../assets/chi_photo.jpg" 
+                    alt="Chị xinh đẹp" 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Sparkle overlay on hover -->
+                  <div class="absolute inset-0 bg-lilac-600/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/95 text-lilac-700 font-semibold text-xs shadow-md">
+                      ✨ Chị xinh đẹp, tài năng số 1 ✨
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Handwritten Caption -->
+                <div class="mt-3.5 text-center">
+                  <p class="font-handwriting text-xl sm:text-2xl font-bold text-stone-800">
+                    Chị xinh đẹp, tài năng số 1 trong lòng em 💖
+                  </p>
+                  <span class="text-[11px] text-stone-400 font-medium">Lúc nào cũng rạng rỡ và toả sáng thế này nhé!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= 4. INTERACTIVE WIDGET 1: TING TING TRÀ SỮA FULL TOPPING ================= -->
+          <div class="mt-12 sm:mt-16 pt-8 border-t border-lilac-200">
+            <div class="bg-gradient-to-br from-lilac-50/90 via-white to-babypink-50/80 rounded-2xl p-5 sm:p-8 border border-lilac-200 shadow-md text-center relative overflow-hidden boba-cup-box">
+              
+              <!-- Decorative boba badge -->
+              <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-lilac-100/90 text-lilac-700 text-xs font-bold mb-3">
+                <i class="fa-solid fa-mug-hot animate-bounce text-babypink-400"></i>
+                <span>Menu Trà Sữa Độc Quyền 20/10</span>
+              </div>
+
+              <h3 class="font-serif text-xl sm:text-3xl font-bold text-stone-800 mb-2">
+                🧋 Ting Ting 1 Ly Trà Sữa Full Topping Cho Chị Hai
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto mb-6">
+                Chị Hai chỉ việc chọn topping và độ ngọt, còn lại em trai sẽ ting ting thanh toán ngay lập tức!
+              </p>
+
+              <!-- Cute Animated Boba Cup Visual -->
+              <div class="relative w-28 h-36 sm:w-32 sm:h-40 mx-auto mb-5 flex items-center justify-center animate-boba-bounce" id="bobaCupVisual">
+                <svg viewBox="0 0 100 130" class="w-full h-full drop-shadow-lg">
+                  <!-- Straw -->
+                  <line x1="50" y1="5" x2="35" y2="45" stroke="#ff92a5" stroke-width="8" stroke-linecap="round" class="boba-straw" />
+                  <!-- Cup Rim -->
+                  <ellipse cx="50" cy="30" rx="36" ry="7" fill="#bfa8f5" />
+                  <!-- Cup Body -->
+                  <path d="M16,30 L25,115 Q26,125 50,125 Q74,125 75,115 L84,30 Z" fill="rgba(255, 238, 221, 0.95)" stroke="#9d8df1" stroke-width="2.5" />
+                  <!-- Tea liquid level -->
+                  <path d="M19,42 L25,115 Q26,124 50,124 Q74,124 75,115 L81,42 Z" fill="#edd5be" />
+                  <!-- Cream Cheese Macchiato Cap -->
+                  <path d="M19,42 Q50,47 81,42 Q75,34 50,34 Q25,34 19,42 Z" fill="#ffffff" />
+                  <!-- Boba Pearls -->
+                  <circle cx="36" cy="112" r="5" fill="#431f72" />
+                  <circle cx="50" cy="114" r="5.5" fill="#2d144e" />
+                  <circle cx="64" cy="112" r="5" fill="#431f72" />
+                  <circle cx="42" cy="103" r="4.8" fill="#552d8c" />
+                  <circle cx="57" cy="104" r="5.2" fill="#3b1c63" />
+                  <circle cx="30" cy="106" r="4.5" fill="#2d144e" />
+                  <circle cx="70" cy="105" r="4.6" fill="#552d8c" />
+                  <!-- Pudding blob -->
+                  <ellipse cx="50" cy="90" rx="14" ry="6" fill="#ffd166" opacity="0.85" />
+                  <!-- Cute smile face on cup -->
+                  <ellipse cx="43" cy="68" rx="2" ry="2.5" fill="#6b3ea8" />
+                  <ellipse cx="57" cy="68" rx="2" ry="2.5" fill="#6b3ea8" />
+                  <path d="M46,74 Q50,79 54,74" stroke="#6b3ea8" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <ellipse cx="38" cy="72" rx="3" ry="1.5" fill="#ff92a5" opacity="0.7" />
+                  <ellipse cx="62" cy="72" rx="3" ry="1.5" fill="#ff92a5" opacity="0.7" />
+                </svg>
+              </div>
+
+              <!-- Interactive Topping Selection Tags -->
+              <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-md mx-auto mb-5 text-xs">
+                <span class="px-2.5 py-1 rounded-full bg-lilac-100 text-lilac-800 font-semibold border border-lilac-200">
+                  🧋 Trân châu hoàng kim
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-semibold border border-amber-200">
+                  🍮 Pudding trứng núng nính
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-babypink-100 text-babypink-800 font-semibold border border-babypink-200">
+                  🧀 Kem cheese béo ngậy
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-softmint-100 text-teal-800 font-semibold border border-softmint-200">
+                  🧊 100% Đá • 100% Ngọt
+                </span>
+              </div>
+
+              <!-- Boba Delivered Counter Display -->
+              <div class="flex flex-col items-center justify-center mb-5">
+                <div class="flex items-baseline space-x-2">
+                  <span id="bobaCounterValue" class="font-serif text-4xl sm:text-6xl font-black text-lilac-700 tracking-tight">1</span>
+                  <span class="text-base sm:text-xl font-bold text-stone-500">ly trà sữa đã ting ting</span>
+                </div>
+                <span class="text-xs text-stone-400 mt-1">Đã sẵn sàng giao tận tay Chị Hai bất kể giờ giấc!</span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button id="orderBobaBtn" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-lilac-600 via-purple-500 to-babypink-400 hover:from-lilac-700 hover:to-babypink-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-lilac-200 hover:shadow-xl active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer">
+                  <i class="fa-solid fa-bell text-amber-200 text-lg"></i>
+                  <span>Ting Ting Thêm 1 Ly Nữa! 🧋</span>
+                </button>
+
+                <button id="superSizeBobaBtn" class="px-4 py-2 text-xs font-semibold text-stone-400 hover:text-lilac-700 hover:underline transition-colors">
+                  Gọi combo 5 ly cho cả tuần 🥤
+                </button>
+              </div>
+
+              <!-- Dynamic Boba Feedback Message -->
+              <div id="bobaFeedbackMsg" class="mt-4 text-xs sm:text-sm font-semibold text-lilac-700 min-h-[22px] transition-all">
+                Đã ting ting 1 ly size L full topping thơm béo cho Chị Hai! 🧋
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= 5. INTERACTIVE WIDGET 2: VOUCHER SAI VẶT EM TRAI 1 NGÀY ================= -->
+          <div class="mt-12 sm:mt-16 pt-8 border-t border-lilac-200">
+            <div class="text-center mb-6">
+              <span class="inline-block px-3 py-1 rounded-full bg-babypink-200 text-stone-700 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-2">
+                🎫 Đặc Quyền Sibling Độc Quyền
+              </span>
+              <h3 class="font-serif text-xl sm:text-3xl font-bold text-stone-800">
+                Voucher Sai Vặt Em Trai Trọn Gói 1 Ngày
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 mt-1">Chạm vào tấm vé để lật mở 5 quyền năng đặc biệt Chị Hai được quyền sai bảo!</p>
+            </div>
+
+            <!-- Flip Voucher 3D Container -->
+            <div class="voucher-card-container max-w-xl mx-auto cursor-pointer" id="voucherContainer">
+              <div class="voucher-card-inner" id="voucherInner">
+                
+                <!-- FRONT SIDE OF VOUCHER -->
+                <div class="voucher-front bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 p-6 sm:p-8 border-2 border-dashed border-lilac-300 shadow-xl relative overflow-hidden">
+                  <!-- Decorative Hologram Ribbon Corner -->
+                  <div class="absolute -top-7 -right-7 w-20 h-20 bg-gradient-to-br from-lilac-400 to-babypink-400 transform rotate-45 flex items-end justify-center pb-1 text-[9px] font-bold text-white uppercase shadow-md">
+                    VIP 2026
+                  </div>
+
+                  <div class="flex items-center justify-between border-b border-lilac-200 pb-3 mb-4">
+                    <div class="flex items-center space-x-2">
+                      <i class="fa-solid fa-crown text-amber-500 text-lg"></i>
+                      <span class="text-xs uppercase font-bold tracking-widest text-lilac-700">SIÊU ĐẶC QUYỀN CHỊ HAI</span>
+                    </div>
+                    <span class="text-[10px] bg-white/90 px-2.5 py-0.5 rounded-full font-bold text-stone-600 border border-lilac-200">
+                      HẠN: VĨNH VIỄN
+                    </span>
+                  </div>
+
+                  <div class="text-center py-4">
+                    <span class="font-serif text-xs sm:text-sm tracking-wider uppercase text-stone-500 block">Dành Riêng Cho Chị Hai Quyền Lực</span>
+                    <h4 class="font-handwriting text-3xl sm:text-5xl font-black text-lilac-700 mt-1 mb-2">
+                      Voucher Sai Vặt Em Trai 24/7
+                    </h4>
+                    <p class="text-xs sm:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
+                      "Có giá trị triệu hồi đứa em trai làm bồi bàn, tài xế, chân xách đồ kiêm người nghe mắng mà không được quyền cãi lại dù chỉ 1 câu!"
+                    </p>
+                  </div>
+
+                  <div class="mt-4 pt-4 border-t border-dashed border-lilac-200 flex items-center justify-between">
+                    <span class="text-xs text-stone-500 flex items-center space-x-1">
+                      <i class="fa-solid fa-hand-pointer text-lilac-500 animate-bounce"></i>
+                      <span>Chạm để lật mở danh sách</span>
+                    </span>
+                    <span class="text-xs font-bold text-lilac-700">Xem 5 đặc quyền VIP ➔</span>
+                  </div>
+                </div>
+
+                <!-- BACK SIDE OF VOUCHER -->
+                <div class="voucher-back bg-gradient-to-br from-stone-900 via-purple-950 to-stone-900 text-white p-6 sm:p-8 border-2 border-lilac-400 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+                  <!-- Watermark -->
+                  <div class="absolute -right-8 -bottom-8 opacity-10 text-white text-9xl pointer-events-none">
+                    <i class="fa-solid fa-ticket"></i>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between border-b border-stone-700 pb-3 mb-4">
+                      <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-sparkles text-amber-400"></i>
+                        <span class="text-xs uppercase font-bold tracking-widest text-lilac-300">5 Điều Khoản Tuân Thủ 100%</span>
+                      </div>
+                      <span id="voucherStatusBadge" class="text-[10px] bg-lilac-900/70 text-purple-200 px-2.5 py-0.5 rounded-full border border-lilac-700 font-semibold">Sẵn Sàng Dùng</span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-stone-200">
+                      <li class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-lilac-300 mt-0.5 shrink-0"></i>
+                        <span><b class="text-white">Điều 1:</b> Rửa chén, lau nhà, dọn dẹp phòng cho Chị Hai sạch bong sáng bóng.</span>
+                      </li>
+                      <li class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-lilac-300 mt-0.5 shrink-0"></i>
+                        <span><b class="text-white">Điều 2:</b> Đi mua trà sữa, bánh ngọt, đồ ăn vặt bất kể mưa hay nắng.</span>
+                      </li>
+                      <li class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-lilac-300 mt-0.5 shrink-0"></i>
+                        <span><b class="text-white">Điều 3:</b> Làm tài xế đưa đón kiêm vệ sĩ xách túi khi Chị đi shopping lượn phố.</span>
+                      </li>
+                      <li class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-lilac-300 mt-0.5 shrink-0"></i>
+                        <span><b class="text-white">Điều 4:</b> Tuyệt đối giữ thái độ ngoan ngoãn, lắng nghe chị tâm sự và cấm cãi!</span>
+                      </li>
+                      <li class="flex items-start space-x-2.5">
+                        <i class="fa-solid fa-circle-check text-lilac-300 mt-0.5 shrink-0"></i>
+                        <span><b class="text-white">Điều 5:</b> Chụp ảnh sống ảo có tâm cho Chị đến khi nào ưng ý mới thôi.</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mt-5 pt-4 border-t border-stone-700 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <span class="text-[11px] text-stone-400 italic">Áp dụng ngay hôm nay & bất cứ khi nào chị muốn!</span>
+                    <button id="activateVoucherBtn" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-lilac-400 to-babypink-400 hover:from-lilac-300 hover:to-babypink-300 text-stone-900 font-bold text-xs shadow-lg active:scale-95 transition-all">
+                      Kích Hoạt Phiếu Ngay ⚡
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= 6. INTERACTIVE WIDGET 3: RÚT QUẺ MAY MẮN CHO CHỊ ================= -->
+          <div class="mt-12 sm:mt-16 pt-8 border-t border-lilac-200">
+            <div class="text-center mb-6">
+              <span class="inline-block px-3 py-1 rounded-full bg-softmint-200 text-teal-800 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-2">
+                🍀 Dự Báo Vận Mệnh 20/10
+              </span>
+              <h3 class="font-serif text-xl sm:text-3xl font-bold text-stone-800">
+                Rút Quẻ May Mắn Cho Chị
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 mt-1">Lắc ống quẻ vũ trụ để xem thông điệp may mắn ngập tràn dành riêng cho Chị</p>
+            </div>
+
+            <!-- Fortune Stick / Card Container -->
+            <div class="max-w-lg mx-auto">
+              <div id="fortuneCard" class="fortune-card bg-gradient-to-br from-white via-lilac-50/50 to-softmint-50/50 rounded-2xl p-6 sm:p-8 border-2 border-lilac-200 shadow-lg text-center relative overflow-hidden">
+                
+                <!-- Badge for Fortune Rank -->
+                <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold mb-3">
+                  <i class="fa-solid fa-star text-amber-500"></i>
+                  <span id="fortuneCategory">Quẻ Thượng Thượng • Đại Cát</span>
+                </div>
+
+                <!-- Fortune Title -->
+                <h4 id="fortuneTitle" class="font-handwriting text-2xl sm:text-4xl font-bold text-lilac-700 mb-3">
+                  Tài Vận Hanh Thông • Tiền Về Như Nước
+                </h4>
+
+                <!-- Fortune Body -->
+                <p id="fortuneBody" class="text-stone-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                  "Trong thời gian tới, công việc của Chị sẽ phất lên như diều gặp gió. Lương thưởng nhân đôi, dự án triệu đô chốt mỏi tay, tài khoản ngân hàng ting ting liên tục không ngừng nghỉ!"
+                </p>
+
+                <!-- Fortune Lucky Elements Grid -->
+                <div class="grid grid-cols-3 gap-2 py-3 px-2 rounded-xl bg-white/80 border border-lilac-100 mb-6 text-xs text-stone-600">
+                  <div class="flex flex-col">
+                    <span class="text-stone-400 text-[10px] uppercase font-bold">Màu May Mắn</span>
+                    <span id="fortuneColor" class="font-bold text-lilac-600 mt-0.5">Tím Lavender</span>
+                  </div>
+                  <div class="flex flex-col border-x border-lilac-100 px-1">
+                    <span class="text-stone-400 text-[10px] uppercase font-bold">Số Tài Lộc</span>
+                    <span id="fortuneNumber" class="font-bold text-babypink-500 mt-0.5">20 & 10</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-stone-400 text-[10px] uppercase font-bold">Quý Nhân</span>
+                    <span id="fortuneHelper" class="font-bold text-teal-600 mt-0.5">Em trai ngoan</span>
+                  </div>
+                </div>
+
+                <!-- Draw Button -->
+                <button id="drawFortuneBtn" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 via-lilac-600 to-babypink-400 hover:opacity-90 text-white font-bold text-xs sm:text-sm shadow-md active:scale-95 transition-all flex items-center justify-center space-x-2 mx-auto cursor-pointer">
+                  <i class="fa-solid fa-dice text-amber-200"></i>
+                  <span>Lắc Ống Rút Quẻ Khác 🥠</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Links -->
+          <div class="mt-12 pt-6 border-t border-lilac-100 flex flex-wrap items-center justify-center gap-3">
+            <a href="../me/index.html" class="glass-pill px-4 py-2 rounded-full text-xs font-semibold text-stone-600 hover:text-lilac-700 transition-colors flex items-center space-x-1.5 active:scale-95">
+              <i class="fa-solid fa-heart text-rose-500"></i>
+              <span>Xem Thiệp Kính Gửi Mẹ 🌹</span>
+            </a>
+            <a href="../index.html" class="glass-pill px-4 py-2 rounded-full text-xs font-semibold text-stone-600 hover:text-lilac-700 transition-colors flex items-center space-x-1.5 active:scale-95">
+              <i class="fa-solid fa-envelope-open-text text-lilac-500"></i>
+              <span>Xem Thiệp Của Bé Đậu 🌸</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= LIGHTBOX: PHÓNG TO ẢNH POLAROID ================= -->
+  <div id="imageLightbox" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="relative max-w-xl w-full flex flex-col items-center">
+      <button id="closeLightboxBtn" class="self-end mb-2 w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center text-lg active:scale-95 cursor-pointer transition-all">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="bg-white p-2.5 sm:p-3 pb-4 sm:pb-5 rounded-2xl shadow-2xl max-w-full">
+        <img id="lightboxImg" src="" alt="Chị xinh đẹp" class="max-h-[65dvh] sm:max-h-[75dvh] w-auto mx-auto rounded-xl object-contain shadow-inner" />
+        <p id="lightboxCaption" class="mt-3 font-handwriting text-lg sm:text-2xl text-center text-stone-800 font-bold px-2"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative z-20 w-full py-4 text-center text-xs text-stone-400">
+    <span>Kính Chúc Chị 20/10 Rực Rỡ • Tiền Vào Như Nước • Nụ Cười Mãi Tươi 💖</span>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ==========================================================================
+       1. CANVAS: FLOATING SPARKLES, PASTEL HEARTS & TWINKLING STARS
+       ========================================================================== */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    function handleResize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', () => setTimeout(handleResize, 150));
+
+    // Pastel Heart Particle
+    class PastelHeart {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 50;
+        this.size = Math.random() * 9 + 8;
+        this.speedY = -(Math.random() * 0.9 + 0.6);
+        this.speedX = (Math.random() - 0.5) * 0.8;
+        this.angle = (Math.random() - 0.5) * 30;
+        this.spin = (Math.random() - 0.5) * 0.8;
+        this.opacity = Math.random() * 0.5 + 0.35;
+        const colors = [
+          'rgba(157, 141, 241, ', // Lilac
+          'rgba(255, 146, 165, ', // Baby pink
+          'rgba(190, 227, 219, ', // Mint
+          'rgba(254, 205, 214, '  // Soft blush
+        ];
+        this.baseColor = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += Math.sin(this.y * 0.015) * 0.6 + this.speedX;
+        this.angle += this.spin;
+        if (this.y < -30 || this.x < -30 || this.x > width + 30) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.angle * Math.PI) / 180);
+        ctx.fillStyle = this.baseColor + this.opacity + ')';
+        ctx.beginPath();
+        const s = this.size;
+        ctx.moveTo(0, s * 0.3);
+        ctx.bezierCurveTo(-s * 0.5, -s * 0.3, -s, s * 0.2, 0, s);
+        ctx.bezierCurveTo(s, s * 0.2, s * 0.5, -s * 0.3, 0, s * 0.3);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Twinkling Star Particle
+    class TwinkleStar {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 3 + 2;
+        this.alpha = Math.random() * 0.8 + 0.2;
+        this.fadeSpeed = (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1);
+      }
+      update() {
+        this.alpha += this.fadeSpeed;
+        if (this.alpha <= 0.1 || this.alpha >= 0.95) {
+          this.fadeSpeed = -this.fadeSpeed;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.fillStyle = `rgba(255, 220, 140, ${this.alpha})`;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = 'rgba(255, 215, 0, 0.6)';
+        ctx.beginPath();
+        // 4-pointed star
+        const cx = this.x;
+        const cy = this.y;
+        const spikes = 4;
+        const outerRadius = this.size;
+        const innerRadius = this.size * 0.4;
+        let rot = Math.PI / 2 * 3;
+        const step = Math.PI / spikes;
+
+        ctx.moveTo(cx, cy - outerRadius);
+        for (let i = 0; i < spikes; i++) {
+          let x = cx + Math.cos(rot) * outerRadius;
+          let y = cy + Math.sin(rot) * outerRadius;
+          ctx.lineTo(x, y);
+          rot += step;
+          x = cx + Math.cos(rot) * innerRadius;
+          y = cy + Math.sin(rot) * innerRadius;
+          ctx.lineTo(x, y);
+          rot += step;
+        }
+        ctx.lineTo(cx, cy - outerRadius);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const isMobileDevice = window.innerWidth < 640;
+    const hearts = Array.from({ length: isMobileDevice ? 16 : 28 }, () => new PastelHeart());
+    const stars = Array.from({ length: isMobileDevice ? 14 : 24 }, () => new TwinkleStar());
+
+    function animateScene() {
+      ctx.clearRect(0, 0, width, height);
+      stars.forEach(s => { s.update(); s.draw(); });
+      hearts.forEach(h => { h.update(); h.draw(); });
+      requestAnimationFrame(animateScene);
+    }
+    animateScene();
+
+    /* ==========================================================================
+       2. VINYL MUSIC PLAYER ("BẬT TÌNH YÊU LÊN" - TĂNG DUY TÂN & HÒA MINZY)
+       ========================================================================== */
+    const audioTrack = {
+      title: 'Bật Tình Yêu Lên',
+      artist: 'Tăng Duy Tân & Hòa Minzy',
+      src: '../assets/music_chi.mp3?v=20261021_chi'
+    };
+
+    let isPlayingAudio = false;
+    const realAudio = new Audio();
+    realAudio.preload = 'auto';
+    realAudio.src = audioTrack.src;
+
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playPauseIcon = document.getElementById('playPauseIcon');
+    const vinylDisc = document.getElementById('vinylDisc');
+    const musicIcon = document.getElementById('musicIcon');
+    const eqVisualizer = document.getElementById('eqVisualizer');
+    const playerLiveDot = document.getElementById('playerLiveDot');
+
+    function setPlayerPlayingState(playing) {
+      isPlayingAudio = playing;
+      if (playing) {
+        playPauseIcon.classList.remove('fa-play', 'ml-0.5');
+        playPauseIcon.classList.add('fa-pause');
+        vinylDisc.classList.add('animate-spin-slow');
+        musicIcon.classList.add('text-babypink-400');
+        if (eqVisualizer) {
+          eqVisualizer.classList.remove('hidden');
+          eqVisualizer.classList.add('md:flex');
+        }
+        if (playerLiveDot) playerLiveDot.classList.remove('hidden');
+      } else {
+        playPauseIcon.classList.remove('fa-pause');
+        playPauseIcon.classList.add('fa-play', 'ml-0.5');
+        vinylDisc.classList.remove('animate-spin-slow');
+        if (eqVisualizer) {
+          eqVisualizer.classList.add('hidden');
+          eqVisualizer.classList.remove('md:flex');
+        }
+        if (playerLiveDot) playerLiveDot.classList.add('hidden');
+      }
+    }
+
+    function toggleMusic() {
+      if (isPlayingAudio) {
+        realAudio.pause();
+        setPlayerPlayingState(false);
+      } else {
+        realAudio.play().then(() => {
+          setPlayerPlayingState(true);
+        }).catch(err => {
+          console.warn('Audio play request blocked or failed:', err);
+        });
+      }
+    }
+
+    playPauseBtn.addEventListener('click', toggleMusic);
+    vinylDisc.addEventListener('click', toggleMusic);
+
+    realAudio.addEventListener('ended', () => {
+      // Loop song
+      realAudio.currentTime = 0;
+      realAudio.play().catch(() => {});
+    });
+
+    /* Gesture unlock & Autoplay setup */
+    function attemptAutoplayOnEntry() {
+      const playPromise = realAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setPlayerPlayingState(true);
+        }).catch(err => {
+          console.log('Autoplay pending user gesture:', err);
+          const unlock = () => {
+            if (!isPlayingAudio) {
+              realAudio.play().then(() => setPlayerPlayingState(true)).catch(() => {});
+            }
+            ['touchstart', 'touchend', 'click', 'pointerdown'].forEach(ev => {
+              window.removeEventListener(ev, unlock);
+            });
+          };
+
+          ['touchstart', 'touchend', 'click', 'pointerdown'].forEach(ev => {
+            window.addEventListener(ev, unlock, { once: true, passive: true });
+          });
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attemptAutoplayOnEntry);
+    } else {
+      attemptAutoplayOnEntry();
+    }
+
+    /* ==========================================================================
+       3. 3D ENVELOPE OPENING & REVEAL
+       ========================================================================== */
+    const envelopeTrigger = document.getElementById('envelopeTrigger');
+    const waxSealBtn = document.getElementById('waxSealBtn');
+    const envelopeEl = document.getElementById('envelopeEl');
+    const envelopeView = document.getElementById('envelopeView');
+    const letterView = document.getElementById('letterView');
+    const foldBackBtn = document.getElementById('foldBackBtn');
+
+    function openEnvelope() {
+      // 1. Play music immediately
+      if (!isPlayingAudio) {
+        realAudio.play().then(() => setPlayerPlayingState(true)).catch(() => {});
+      }
+
+      // 2. Confetti celebration
+      try {
+        if (typeof confetti === 'function') {
+          triggerSisterConfetti();
+        }
+      } catch (e) {
+        console.warn('Confetti burst error:', e);
+      }
+
+      // 3. Open Envelope flap
+      envelopeEl.classList.add('open');
+      waxSealBtn.style.opacity = '0';
+      waxSealBtn.style.transform = 'translate(-50%, -50%) scale(0)';
+
+      // 4. Slide into Letter View
+      setTimeout(() => {
+        envelopeView.classList.add('opacity-0', '-translate-y-6', 'pointer-events-none');
+        
+        setTimeout(() => {
+          envelopeView.classList.add('hidden');
+          letterView.classList.remove('hidden');
+          
+          requestAnimationFrame(() => {
+            letterView.classList.remove('opacity-0', 'translate-y-8');
+            letterView.classList.add('opacity-100', 'translate-y-0');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }, 500);
+      }, 650);
+    }
+
+    envelopeTrigger.addEventListener('click', openEnvelope);
+    if (waxSealBtn) {
+      waxSealBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openEnvelope();
+      });
+    }
+
+    // Fold back functionality
+    foldBackBtn.addEventListener('click', () => {
+      letterView.classList.add('opacity-0', 'translate-y-8');
+      
+      setTimeout(() => {
+        letterView.classList.add('hidden');
+        envelopeView.classList.remove('hidden');
+        
+        requestAnimationFrame(() => {
+          envelopeEl.classList.remove('open');
+          waxSealBtn.style.opacity = '1';
+          waxSealBtn.style.transform = 'translate(-50%, -50%) scale(1)';
+          envelopeView.classList.remove('opacity-0', '-translate-y-6', 'pointer-events-none');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }, 500);
+    });
+
+    function triggerSisterConfetti() {
+      const count = 180;
+      const defaults = {
+        origin: { y: 0.65 },
+        spread: 85,
+        ticks: 200,
+        gravity: 0.8,
+        colors: ['#9d8df1', '#ff92a5', '#bee3db', '#ffd166', '#ffffff']
+      };
+
+      confetti({
+        ...defaults,
+        particleCount: Math.floor(count * 0.6),
+        scalar: 1.2,
+        shapes: ['circle']
+      });
+
+      confetti({
+        ...defaults,
+        particleCount: Math.floor(count * 0.4),
+        scalar: 1.6,
+        shapes: ['circle', 'square']
+      });
+    }
+
+    /* Web Audio API synthesizer for crystal chime sound */
+    function playChimeSound() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const actx = new AudioContext();
+        
+        const now = actx.currentTime;
+        const freqs = [523.25, 659.25, 1046.5]; // C5, E5, C6 chime chord
+        
+        freqs.forEach((freq, idx) => {
+          const osc = actx.createOscillator();
+          const gain = actx.createGain();
+          
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+          
+          gain.gain.setValueAtTime(0, now + idx * 0.08);
+          gain.gain.linearRampToValueAtTime(0.18, now + idx * 0.08 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.9);
+          
+          osc.connect(gain);
+          gain.connect(actx.destination);
+          
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.95);
+        });
+      } catch (err) {
+        console.warn('AudioContext chime error:', err);
+      }
+    }
+
+    /* ==========================================================================
+       4. INTERACTIVE WIDGET 1: TING TING TRÀ SỮA FULL TOPPING
+       ========================================================================== */
+    const orderBobaBtn = document.getElementById('orderBobaBtn');
+    const superSizeBobaBtn = document.getElementById('superSizeBobaBtn');
+    const bobaCounterValue = document.getElementById('bobaCounterValue');
+    const bobaFeedbackMsg = document.getElementById('bobaFeedbackMsg');
+    const bobaCupVisual = document.getElementById('bobaCupVisual');
+
+    let currentBobaCups = 1;
+    const bobaIcons = ['🧋', '🥤', '🧃', '🍮', '✨', '💖', '🥰', '🧀'];
+
+    const bobaCompliments = [
+      'Ting ting! 1 ly trân châu đường đen full topping đang trên đường tới phòng Chị! 🧋',
+      'Đã order: Trà sữa kem cheese béo ngậy ngọt ngào như tình chị em! 🧀',
+      'Thêm 1 ly pudding trứng núng nính mát lạnh cho Chị Hai tỉnh táo làm việc! 🍮',
+      'Thực đơn VIP: 100% đường, 100% đá và 1000% yêu thương gửi Chị! ✨',
+      'Order thành công! Hóa đơn đã được trừ thẳng vào tài khoản em trai hihi! 💳'
+    ];
+
+    function handleBobaOrder(increment = 1) {
+      currentBobaCups += increment;
+      bobaCounterValue.textContent = currentBobaCups.toLocaleString('en-US');
+
+      // Audio Chime
+      playChimeSound();
+
+      // Boba cup wiggle
+      bobaCupVisual.classList.remove('animate-wiggle');
+      void bobaCupVisual.offsetWidth; // trigger reflow
+      bobaCupVisual.classList.add('animate-wiggle');
+
+      // Random feedback
+      const msg = bobaCompliments[Math.floor(Math.random() * bobaCompliments.length)];
+      bobaFeedbackMsg.textContent = msg;
+
+      // Confetti burst
+      const rect = orderBobaBtn.getBoundingClientRect();
+      confetti({
+        particleCount: 22,
+        spread: 60,
+        origin: {
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight
+        },
+        colors: ['#9d8df1', '#ff92a5', '#bee3db', '#ffd166']
+      });
+
+      // Spawn floating boba icons
+      const clickX = rect.left + rect.width / 2;
+      const clickY = rect.top;
+      for (let i = 0; i < 6; i++) {
+        spawnFloatingParticle(clickX, clickY, bobaIcons);
+      }
+    }
+
+    orderBobaBtn.addEventListener('click', () => handleBobaOrder(1));
+    superSizeBobaBtn.addEventListener('click', () => handleBobaOrder(5));
+
+    function spawnFloatingParticle(x, y, iconList) {
+      const el = document.createElement('div');
+      el.className = 'flying-particle text-2xl select-none';
+      el.textContent = iconList[Math.floor(Math.random() * iconList.length)];
+      
+      const tx = (Math.random() - 0.5) * 140 + 'px';
+      const ty = -(Math.random() * 110 + 80) + 'px';
+      const rot = (Math.random() - 0.5) * 60 + 'deg';
+      
+      el.style.setProperty('--tx', tx);
+      el.style.setProperty('--ty', ty);
+      el.style.setProperty('--rot', rot);
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+    }
+
+    /* ==========================================================================
+       5. INTERACTIVE WIDGET 2: VOUCHER SAI VẶT EM TRAI 1 NGÀY (FLIP CARD)
+       ========================================================================== */
+    const voucherContainer = document.getElementById('voucherContainer');
+    const voucherInner = document.getElementById('voucherInner');
+    const activateVoucherBtn = document.getElementById('activateVoucherBtn');
+    const voucherStatusBadge = document.getElementById('voucherStatusBadge');
+
+    voucherContainer.addEventListener('click', (e) => {
+      // Avoid flipping if clicking activate button
+      if (e.target.closest('#activateVoucherBtn')) return;
+      voucherInner.classList.toggle('flipped');
+    });
+
+    activateVoucherBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playChimeSound();
+      triggerSisterConfetti();
+      
+      activateVoucherBtn.textContent = 'ĐÃ KÍCH HOẠT THÀNH CÔNG! ⚡';
+      activateVoucherBtn.classList.remove('from-lilac-400', 'to-babypink-400');
+      activateVoucherBtn.classList.add('from-emerald-400', 'to-teal-500', 'text-white');
+
+      if (voucherStatusBadge) {
+        voucherStatusBadge.textContent = 'ĐÃ KÍCH HOẠT VIP';
+        voucherStatusBadge.classList.remove('bg-lilac-900/70', 'text-purple-200');
+        voucherStatusBadge.classList.add('bg-emerald-800', 'text-emerald-200');
+      }
+
+      setTimeout(() => {
+        alert('🎉 Chúc mừng Chị đã kích hoạt SIÊU VOUCHER 20/10!\n\nHôm nay Chị là Nóc Nhà số 1, em trai sẵn sàng phục vụ 100% yêu cầu: rửa chén, dọn nhà, mua trà sữa và tuyệt đối không cãi một câu! Chúc Chị 20/10 siêu vui vẻ! 💖');
+      }, 350);
+    });
+
+    /* ==========================================================================
+       6. INTERACTIVE WIDGET 3: RÚT QUẺ MAY MẮN CHO CHỊ
+       ========================================================================== */
+    const fortunes = [
+      {
+        category: 'Quẻ Thượng Thượng • Đại Cát',
+        title: 'Tài Vận Hanh Thông • Tiền Về Như Nước',
+        body: '"Công việc của Chị Hai sắp tới sẽ phất lên như diều gặp gió. Lương thưởng nhân đôi, dự án triệu đô chốt mỏi tay, tài khoản ngân hàng ting ting liên tục không ngừng nghỉ!"',
+        color: 'Tím Lavender',
+        number: '20 & 10',
+        helper: 'Em trai ngoan'
+      },
+      {
+        category: 'Quẻ Thượng Cát • Nhan Sắc',
+        title: 'Nhan Sắc Nghịch Thiên • Da Căng Bóng',
+        body: '"Nhan sắc Chị thăng hạng vượt bậc, da căng bóng mọng nước không cần filter. Đi đâu cũng tỏa sáng ngời ngời khiến vạn người ngoái nhìn trầm trồ!"',
+        color: 'Hồng Baby Pastel',
+        number: '88 & 99',
+        helper: 'Chuyên viên skincare'
+      },
+      {
+        category: 'Quẻ Tình Duyên • May Mắn',
+        title: 'Đào Hoa Nở Rộ • Gặp Được Chân Ái',
+        body: '"Vũ trụ sắp gửi đến Chị một anh rể siêu phẩm: vừa tâm lý, tinh tế, đẹp trai, lại chung tình và chiều chuộng Chị như công chúa (đặc biệt rất biết bao ăn em trai)!"',
+        color: 'Đỏ Ruby & Hồng Cam',
+        number: '02 & 14',
+        helper: 'Thần Tình Yêu Cupid'
+      },
+      {
+        category: 'Quẻ Sự Nghiệp • Đại Lợi',
+        title: 'Thăng Chức Vù Vù • Sếp Quý Đồng Nghiệp Nể',
+        body: '"Mọi ý tưởng và nỗ lực của Chị đều được ghi nhận xứng đáng. Vị trí thăng tiến rộng mở, thành công vang dội, bước đi vững chắc trên con đường sự nghiệp!"',
+        color: 'Xanh Mint Bạc Hà',
+        number: '68 & 86',
+        helper: 'Sếp lớn & Cố vấn VIP'
+      },
+      {
+        category: 'Quẻ Hưởng Thụ • Vạn Sự Vui',
+        title: 'Shopping Thả Ga • Ăn Cả Thế Giới Không Béo',
+        body: '"Quẻ đại lộc: Chị đi shopping toàn bắt gặp đồ đẹp sale sốc, quẹt thẻ mỏi tay không cần nhìn giá. Ăn lẩu trà sữa thả ga mà eo vẫn thon gọn vạn người mê!"',
+        color: 'Vàng Hoàng Kim',
+        number: '79 & 39',
+        helper: 'Thẻ tín dụng vô hạn'
+      },
+      {
+        category: 'Quẻ Bình An • An Yên Hạnh Phúc',
+        title: 'Tâm Hồn Thư Thái • Vui Tươi Rạng Rỡ',
+        body: '"Mỗi ngày thức dậy đều có niềm vui mới đón chờ. Gia đình êm ấm, tinh thần sảng khoái, không âu lo phiền muộn, nụ cười rạng rỡ luôn nở trên môi!"',
+        color: 'Trắng Sữa & Tím Nhạt',
+        number: '11 & 77',
+        helper: 'Cả gia đình thân yêu'
+      }
+    ];
+
+    let currentFortuneIndex = 0;
+    const drawFortuneBtn = document.getElementById('drawFortuneBtn');
+    const fortuneCard = document.getElementById('fortuneCard');
+    const fortuneCategory = document.getElementById('fortuneCategory');
+    const fortuneTitle = document.getElementById('fortuneTitle');
+    const fortuneBody = document.getElementById('fortuneBody');
+    const fortuneColor = document.getElementById('fortuneColor');
+    const fortuneNumber = document.getElementById('fortuneNumber');
+    const fortuneHelper = document.getElementById('fortuneHelper');
+
+    drawFortuneBtn.addEventListener('click', () => {
+      playChimeSound();
+      fortuneCard.classList.add('revealing');
+
+      // Pick next or random fortune
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * fortunes.length);
+      } while (nextIndex === currentFortuneIndex && fortunes.length > 1);
+      currentFortuneIndex = nextIndex;
+
+      const f = fortunes[currentFortuneIndex];
+
+      setTimeout(() => {
+        fortuneCategory.textContent = f.category;
+        fortuneTitle.textContent = f.title;
+        fortuneBody.textContent = f.body;
+        fortuneColor.textContent = f.color;
+        fortuneNumber.textContent = f.number;
+        fortuneHelper.textContent = f.helper;
+
+        fortuneCard.classList.remove('revealing');
+
+        confetti({
+          particleCount: 25,
+          spread: 70,
+          origin: { y: 0.75 },
+          colors: ['#bee3db', '#9d8df1', '#ff92a5', '#ffd166']
+        });
+      }, 300);
+    });
+
+    /* ==========================================================================
+       7. POLAROID LIGHTBOX PREVIEW
+       ========================================================================== */
+    const imageLightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+    const sisterPolaroidCard = document.getElementById('sisterPolaroidCard');
+
+    if (sisterPolaroidCard) {
+      sisterPolaroidCard.addEventListener('click', () => {
+        const img = sisterPolaroidCard.querySelector('img');
+        const caption = sisterPolaroidCard.querySelector('p');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxCaption.textContent = caption ? caption.textContent.trim() : 'Chị xinh đẹp, tài năng số 1 💖';
+          imageLightbox.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            imageLightbox.classList.remove('opacity-0');
+          });
+        }
+      });
+    }
+
+    function closeLightbox() {
+      if (!imageLightbox) return;
+      imageLightbox.classList.add('opacity-0');
+      setTimeout(() => imageLightbox.classList.add('hidden'), 300);
+    }
+
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+    if (imageLightbox) {
+      imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) closeLightbox();
+      });
+    }
+
+    /* ==========================================================================
+       8. AMBIENT TOUCH SPARKS
+       ========================================================================== */
+    function spawnTouchSpark(x, y) {
+      const icons = ['🧋', '💖', '✨', '🌸', '⭐', '🥠', '👑'];
+      const el = document.createElement('div');
+      el.textContent = icons[Math.floor(Math.random() * icons.length)];
+      el.style.position = 'fixed';
+      el.style.left = (x - 10) + 'px';
+      el.style.top = (y - 10) + 'px';
+      el.style.fontSize = (Math.random() * 8 + 18) + 'px';
+      el.style.zIndex = '9999';
+      el.style.pointerEvents = 'none';
+      el.style.userSelect = 'none';
+      el.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      el.style.opacity = '1';
+      document.body.appendChild(el);
+
+      const destX = (Math.random() - 0.5) * 80;
+      const destY = -(Math.random() * 70 + 40);
+
+      requestAnimationFrame(() => {
+        el.style.transform = `translate(${destX}px, ${destY}px) scale(1.3) rotate(${Math.random() * 40 - 20}deg)`;
+        el.style.opacity = '0';
+      });
+
+      setTimeout(() => el.remove(), 1250);
+    }
+
+    document.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button, input, a, .wax-seal, #envelopeTrigger, #vinylDisc, #voucherContainer, #fortuneCard')) return;
+      spawnTouchSpark(e.clientX, e.clientY);
+    }, { passive: true });
+  </script>
+</body>
+</html>
